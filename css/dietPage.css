@@ -21,13 +21,14 @@ main {
 #diet {
   flex-grow: 1;
   background-color: rgba(0, 0, 0, 0.678);
-  margin-top: 30px;
-  margin-left: 20px;
-  margin-right: 20px;
-  flex-direction: column;
+  height: 100vh;
+  margin-top: 50px;
+  margin-left: 35px;
+  margin-right: 35px;
   display: flex;
-  align-content: center;
+  align-items: center;
   justify-content: space-between;
+
 }
 
 #container {
