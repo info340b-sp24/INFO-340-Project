@@ -1,7 +1,15 @@
 body {
   background-image: url("https://static.vecteezy.com/system/resources/previews/001/937/504/original/vegetables-collection-pattern-hand-draw-vintage-style-black-and-white-isolated-on-white-background-free-vector.jpg");
   background-size: cover;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  margin: 0;
+}
 
+
+main {
+  flex: 1;
 }
 
 main > #buildDiet {
@@ -11,11 +19,20 @@ main > #buildDiet {
 }
 
 main > #buildDiet > h1 {
- color: white;
+  padding: 30px;
+  color: white;
 }
 
-main {
-  flex: 1;
+main > #buildDiet {
+  display: flex;
+  justify-content: center;
+  background-color: rgba(0, 0, 0, 0.567);
+}
+
+main > #buildDiet {
+  display: flex;
+  justify-content: center;
+  background-color: rgba(0, 0, 0, 0.567);
 }
 
 #diet {
@@ -28,18 +45,39 @@ main {
   display: flex;
   align-items: center;
   justify-content: space-between;
+}
 
+footer {
+  margin-top: auto;
 }
 
 #container {
   flex-grow: 1;
   display: flex;
+  flex-wrap: wrap;
   justify-content: space-evenly;
 }
 
 .circle {
-  width: 50px;
-  height: 50px;
+  width: 8em;
+  height: 8em;
   border-radius: 50%;
   background-color: white;
+}
+
+
+@media (min-width: 740px) {
+  main > #buildDiet > h1 {
+    padding: none;
+  }
+
+  .circle {
+    width: 10em;
+    height: 10em;
+  }
+
+}
+
+@media (min-width: 1000px) {
+
 }
