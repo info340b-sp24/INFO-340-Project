@@ -1,14 +1,33 @@
 body {
   background-image: url("https://static.vecteezy.com/system/resources/previews/001/937/504/original/vegetables-collection-pattern-hand-draw-vintage-style-black-and-white-isolated-on-white-background-free-vector.jpg");
   background-size: cover;
+
 }
 
-main > section {
+main > #buildDiet {
   display: flex;
   justify-content: center;
   background-color: rgba(0, 0, 0, 0.567);
 }
 
-main > section > h1 {
+main > #buildDiet > h1 {
  color: white;
+}
+
+main {
+  flex: 1;
+}
+
+#diet {
+  flex-grow: 1;
+  background-color: rgba(0, 0, 0, 0.678);
+  margin-top: 30px;
+  margin-left: 20px;
+  margin-right: 20px;
+  display: flex;
+  flex-direction: column;
+}
+
+#container {
+  flex-grow: 1;
 }
