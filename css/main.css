@@ -1,17 +1,29 @@
 body {
     margin: 0;
     background-color: black;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
 }
 
 .Navbar{
+    position: fixed;
     background-color: black;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    margin-top: 1%;
+    margin-top: 0;
     width: 100%;
     height: 8%;
     z-index: 1000;
+}
+
+.NavbarMore {
+    width: 60px;
+    height: 60px;
+    background-color: transparent;
+    border: none;
+    display: none;
 }
 
 .NavbarContent, .FooterContent {
@@ -58,9 +70,9 @@ body {
 .Footer {
     background: linear-gradient(to right, #420731, #A8117E);
     bottom: 0;
-    height: 8%;
+    height: 100px;
     width: 100%;
-    position: fixed;
+    position: relative;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -97,5 +109,135 @@ body {
 
 .FooterContent2 a {
     text-decoration: none;
+}
+
+
+@media only screen and (max-width: 740px) {
+    .NavbarMore {
+        display: block;
+        margin: 0;
+    }
+
+    .NavbarContent {
+        margin-top: 10%;
+        width: 100vw;
+        display: flex;
+        justify-content: space-between;
+
+    }
+
+    .NavbarContent a:not(.NutriGenius), .NavbarContent2,
+    .FooterContent *:not(.NutriGenius), .FooterContent2 a:not(.github, .gmail) {
+        display: none;
+    }
+
+}
+
+/* Below is content only for Main page*/
+
+.mainPageTitle {
+
+    height: 100vh;
+    margin: 0 25% 0 25%;
+    align-content: center;
+    text-align: center;
+}
+
+h1 {
+    margin-bottom: 0;
+    font-size: 8vw;
+    color: white;
+}
+
+hr {
+    border: none;
+    height: 1px;
+    background-color: white;
+    margin: 0 200px 40px 200px;
+}
+
+h2 {
+    text-align: center;
+    font-size: 1.5vw;
+    color: white;
+}
+
+.sectionBreaker {
+    width: 95vw;
+    max-height: 30px;
+}
+
+
+.mainPageNavigation {
+
+    margin: 5% 10% 5% 10%;
+    display: flex;
+    align-content: center;
+    justify-content: space-between;
+}
+
+.mainPageNavigation1,
+.mainPageNavigation2,
+.mainPageNavigation3 {
+    text-align: center;
+}
+
+.circle {
+    width: 200px;
+    height: 200px;
+    margin: 0 100px;
+    background-color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.circle img {
+    width: 50%;
+    height: 50%;
+}
+
+.mainPageNavigation p {
+    margin-top: 10%;
+    text-align: center;
+    color: white;
+    font-size: 30px;
+    font-weight: bold;
+}
+
+
+button {
+    width: 60px;
+    height: 60px;
+    background-color: white;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    color: black;
+    font-size: 16px;
+}
+
+@media only screen and (max-width: 1000px) {
+    .mainPageNavigation {
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        margin: 10px 0;
+    }
+
+    .circle {
+        margin-top: 20%;
+        margin-bottom: 20%;
+    }
+
+    .mainPageTitle h1 {
+        font-size: 10vw;
+    }
+
+    .mainPageTitle h2 {
+        font-size: 5vw;
+    }
+
 }
 
