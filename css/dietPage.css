@@ -189,9 +189,6 @@ footer {
   font-weight: bold;
 }
 
-
-
-
 @media (min-width: 740px) {
   main > #buildDiet > h1 {
     padding: none;
