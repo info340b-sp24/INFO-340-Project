@@ -4,51 +4,47 @@ body {
   flex-direction: column;
   min-height: 100vh;
   margin: 0;
+  background-image: url("https://static.vecteezy.com/system/resources/previews/001/937/504/original/vegetables-collection-pattern-hand-draw-vintage-style-black-and-white-isolated-on-white-background-free-vector.jpg");
 }
 
 
 main {
-  background-image: url("https://static.vecteezy.com/system/resources/previews/001/937/504/original/vegetables-collection-pattern-hand-draw-vintage-style-black-and-white-isolated-on-white-background-free-vector.jpg");
   flex: 1;
   height: 100vh;
 }
 
-main > #buildDiet {
+main > #libraryHeader {
   display: flex;
   justify-content: center;
-  background-color: rgba(0, 0, 0, 0.567);
+  background-color: rgba(0, 0 , 0, 0.5);
 }
 
-main > #buildDiet {
-  display: flex;
-  justify-content: center;
-  background-color: rgba(0, 0, 0, 0.567);
+.backgroundImgLib {
+  z-index: 1;
 }
 
-main > #buildDiet {
-  display: flex;
-  justify-content: center;
-  background-color: rgba(0, 0, 0, 0.567);
-}
-
-#buildDiet {
+#libraryHeader {
   flex-direction: column;
   align-items: center;
   justify-content: center;
+
 }
 
-#buildDiet h1 {
+#libraryHeader p {
   margin-top: 10%;
   margin-bottom: 5%;
-  font-size: 5vw;
+  font-size: 2vw;
+  color: white;
+  text-align: center;
+  font-weight: bold;
   font-family: Arial, Helvetica, sans-serif;
 }
 
-#buildDiet {
+#libraryHeader {
   flex-direction: column;
 }
 
-#buildDiet #searchBar {
+#libraryHeader #searchBar {
   width: 100%;
   height: 8vh;
   background-color: #656565;
@@ -189,6 +185,54 @@ footer {
   font-weight: bold;
 }
 
+
+table {
+  background-color: lightgray;
+  margin-top: 5%;
+  margin-bottom: 5%;
+}
+.table-container {
+  background-color: #f0f0f0;
+  padding: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+
+.table-container table {
+  width: 80%;
+  border-collapse: collapse;
+  text-align: left;
+}
+
+
+.table-container table thead tr.header {
+  background-color: #d0e7f9;
+}
+
+
+.table-container table thead th {
+  padding: 10px;
+  font-weight: bold;
+}
+
+
+.table-container table tbody tr {
+  border-bottom: 1px solid white;
+}
+
+
+.table-container table tbody td {
+  padding: 10px;
+}
+
+
+.table-container table tbody td.star-icon {
+  text-align: left;
+}
+
+
 @media (min-width: 740px) {
   main > #buildDiet > h1 {
     padding: none;
@@ -201,6 +245,3 @@ footer {
 
 }
 
-@media (min-width: 1000px) {
-
-}
