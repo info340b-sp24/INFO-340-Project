@@ -1,5 +1,4 @@
 body {
-  background-image: url("https://static.vecteezy.com/system/resources/previews/001/937/504/original/vegetables-collection-pattern-hand-draw-vintage-style-black-and-white-isolated-on-white-background-free-vector.jpg");
   background-size: cover;
   display: flex;
   flex-direction: column;
@@ -9,18 +8,9 @@ body {
 
 
 main {
+  background-image: url("https://static.vecteezy.com/system/resources/previews/001/937/504/original/vegetables-collection-pattern-hand-draw-vintage-style-black-and-white-isolated-on-white-background-free-vector.jpg");
   flex: 1;
-}
-
-main > #buildDiet {
-  display: flex;
-  justify-content: center;
-  background-color: rgba(0, 0, 0, 0.567);
-}
-
-main > #buildDiet > h1 {
-  padding: 30px;
-  color: white;
+  height: 100vh;
 }
 
 main > #buildDiet {
@@ -34,36 +24,172 @@ main > #buildDiet {
   justify-content: center;
   background-color: rgba(0, 0, 0, 0.567);
 }
+
+main > #buildDiet {
+  display: flex;
+  justify-content: center;
+  background-color: rgba(0, 0, 0, 0.567);
+}
+
+#buildDiet {
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+#buildDiet h1 {
+  margin-top: 10%;
+  margin-bottom: 5%;
+  font-size: 5vw;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+#buildDiet {
+  flex-direction: column;
+}
+
+#buildDiet #searchBar {
+  width: 100%;
+  height: 8vh;
+  background-color: #656565;
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+}
+
+#searchBar .buildDietSearchBar {
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
+.buildDietSearchBar input {
+  margin-left: 2vw;
+  font-size: 3vh;
+  color: lightgrey;
+  background-color: transparent;
+  width: 100%;
+  padding: 10px;
+  border: none;
+  border-bottom: 1px solid rgb(255, 255, 255, 0.5);
+}
+
+.buildDietSearchBar input::placeholder {
+  color: lightgrey;
+}
+
+#searchBar button {
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+}
+
+#searchBar img {
+  padding-right: 10px;
+  width:40px;
+  height:40px;
+}
+
+#searchBar .buildDietSearchBar button img{
+  padding-left: 10px;
+  width:50px;
+  height:50px;
+}
+
 
 #diet {
+
   flex-grow: 1;
   background-color: rgba(0, 0, 0, 0.678);
   height: 100vh;
-  margin-top: 50px;
-  margin-left: 35px;
-  margin-right: 35px;
+  margin: 50px 35px 50px 35px;
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: space-between;
 }
+
+#dietSummaryOp {
+  width: 95vw;
+  height: 10vh;
+  display: flex;
+  justify-content: space-between;
+}
+
+#dietSummaryOp button {
+  white-space: nowrap;
+  color: white;
+  font-size: 50px;
+  padding: 20px;
+  margin-top: auto;
+  background-color: transparent;
+  border: none;
+  width: 1vw;
+  height: 1vh;
+}
+
+#dietSummaryOp button:first-child {
+  width: 20%;
+  float: left;
+  color: white;
+}
+
+#dietSummaryOp button:nth-child(2) {
+  width: 30%;
+  float: right;
+}
+
+#dietSummaryAllMeals {
+  width: 90%;
+  height: 10%;
+  margin-top: 5%;
+  margin-bottom: 5%;
+  background-color: lightgrey;
+  border: none;
+  display: flex;
+  align-items: center;
+}
+
+#dietSummaryAllMeals p {
+  font-size: 40px;
+  padding: 5px 5px 5px 20px;
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: bold;
+
+}
+
+
 
 footer {
   margin-top: auto;
 }
 
-#container {
+#nutriContainer {
   flex-grow: 1;
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-evenly;
 }
 
-.circle {
-  width: 8em;
-  height: 8em;
-  border-radius: 50%;
+
+
+#nutriContainer .circle {
+  width: 300px;
+  height: 300px;
   background-color: white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
 }
+
+#nutriContainer .circle p{
+  font-size: 40px;
+  font-weight: bold;
+}
+
+
 
 
 @media (min-width: 740px) {

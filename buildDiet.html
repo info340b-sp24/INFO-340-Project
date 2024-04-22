@@ -31,13 +31,47 @@
 
     <section id="buildDiet">
       <h1>Build Your Daily Diet</h1>
+       <section id="searchBar">
+           <form class="buildDietSearchBar">
+               <button type="submit"><img src="data/icons/searchW.png" alt="searchIcons" /></button>
+               <input type="text" name="query" placeholder="search food..." required>
+           </form>
+           <button type="reset"><img src="data/icons/cancelW.png" alt="cancelIcons" /></button>
+       </section>
     </section>
 
     <section id="diet">
-      <section id="container">
-        <div class="circle"></div>
-        <div class="circle"></div>
-        <div class="circle"></div>
+        <section id="dietSummaryOp">
+            <button type="button">clear</button>
+            <button type="button">see summary</button>
+        </section>
+
+        <section id="dietSummaryAllMeals">
+            <p>today's meal: </p>
+        </section>
+
+      <section id="nutriContainer">
+          <div class="nutriBar1">
+              <div class="circle">
+                  <p>Calorie <br> ####</p>
+                  <button><img src="data/icons/moreHB.svg" alt="moreIcons" /></button>
+              </div>
+          </div>
+
+          <div class="nutriBar2">
+              <div class="circle">
+                  <p>Vitamin <br> ####</p>
+                  <button><img src="data/icons/moreHB.svg" alt="moreIcons" /></button>
+              </div>
+          </div>
+
+          <div class="nutriBar3">
+              <div class="circle">
+                  <p>Protein <br> ####</p>
+                  <button><img src="data/icons/moreHB.svg" alt="moreIcons" /></button>
+              </div>
+          </div>
+
       </section>
     </section>
 
