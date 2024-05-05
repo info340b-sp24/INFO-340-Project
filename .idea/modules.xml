@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/securityspringreactdemo.iml" filepath="$PROJECT_DIR$/.idea/securityspringreactdemo.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/OAuthReact.iml" filepath="$PROJECT_DIR$/.idea/OAuthReact.iml" />
     </modules>
   </component>
 </project>
