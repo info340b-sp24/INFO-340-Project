@@ -1,15 +1,28 @@
-import React, {useEffect, useState} from 'react';
+import React, {useState} from 'react';
 import {SERVER_URL} from "./constant";
+import LoginForm from "./LoginComponents/LoginForm";
+import RegisterForm from "./LoginComponents/RegisterForm";
+
 
 const Login = () => {
-    const handleLogin = (provider) => {
-        window.location.href = `http://localhost:8080/oauth2/authorization/${provider}`;
+    const handleOAuthLogin = (provider) => {
+        window.location.href = SERVER_URL + `/oauth2/authorization/${provider}`;
     };
 
     return (
         <div>
-            <button onClick={() => handleLogin('google')}>Login with Google</button>
-            <button onClick={() => handleLogin('github')}>Login with GitHub</button>
+
+            <div><h1>Welcome to NutriGenius</h1></div>
+
+            <LoginForm/>
+
+            <RegisterForm/>
+
+            <div>
+                <button onClick={() => handleOAuthLogin('google')}>Login with Google</button>
+                <button onClick={() => handleOAuthLogin('github')}>Login with GitHub</button>
+            </div>
+
         </div>
     );
 };
