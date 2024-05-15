@@ -1,42 +1,112 @@
 import React, {useEffect, useState} from 'react';
+import "../CSS/Home.css"
+import ImgTitleSection from "../Data/Image/ImgHomeTitleSection.png"
 import {SERVER_URL} from "./constant";
+import axios from "axios";
+import {FaEnvelope, FaGithub} from "react-icons/fa";
+import foods from '../Data/JSON/foodInput.json';
+import foods2 from '../Data/JSON/foodInput2.json';
+import foods3 from '../Data/JSON/foodInput3.json';
+import DynamicPieChart from "./Chart";
 
-const HomePage = () => {
+function HomePage() {
 
     const [userData, setUserData] = useState({});
+    const [isLoggedIn, setIsLoggedIn] = useState(false);
 
-    useEffect(() => {
-        fetch(
-            SERVER_URL + '/user/me',
-            {method: 'GET', headers: {'Content-Type': 'application/json'}, credentials: 'include'}
+    function TitleSection() {
+        return (
+            <div className='webTitleSection'>
+                <img
+                    className='webTitleImg'
+                    src={ImgTitleSection}
+                    alt="ImgTitleSection"
+                />
+                <h1 className='webTitleHeader'>NutriGenius</h1>
+                <span className="links-Titlesection">
+                        <a href="https://github.com/RandolphTang/NutriGenius" target="_blank"
+                           rel="noopener noreferrer">
+                        <FaGithub/>
+                        </a>
+
+                        <a href="mailto:y031125k@gmail.com?subject=Subject Text&body=Body Content" target="_blank"
+                           rel="noopener noreferrer">
+                        <FaEnvelope/>
+                        </a>
+            </span>
+            </div>
         )
-            .then(response => {
-                if (!response.ok) {
-                    throw new Error(`Network response was not ok. Status: ${response.status}`);
-                }
-                return response.json();
-            })
-            .then(data => {
-                setUserData(data);
-            })
-            .catch(error => {
-                console.error('Error fetching user data:', error);
-            });
-    }, []);
-    const handleRedirect = () => {
-        window.location.href = 'http://localhost:3000/userProfile';
-    };
+    }
+
+    function CarouselComponent() {
+
+        const datasets = [foods, foods2, foods3];
+
+        const [currentIndex, setCurrentIndex] = useState(0);
+
+        useEffect(() => {
+            const interval = setInterval(() => {
+                setCurrentIndex(prevIndex => (prevIndex + 1) % datasets.length);
+            }, 3000);
+
+            return () => clearInterval(interval);
+        }, []);
+
+        const handleDotClick = index => {
+            setCurrentIndex(index);
+        };
+
+        return (
+            <div className="disPlaySection">
+
+                <div className="carouselDots">
+                    {datasets.map((_, index) => (
+                        <span
+                            key={index}
+                            style={{
+                                height: '20px',
+                                width: '20px',
+                                backgroundColor: currentIndex === index ? 'grey' : 'transparent',
+                                border: '1px solid grey ',
+                                borderRadius: '50%',
+                                margin: '5px 0',
+                                cursor: 'pointer',
+                                marginLeft: '20%'
+
+                            }}
+                            onClick={() => handleDotClick(index)}
+                        ></span>
+                    ))}
+                </div>
+
+                <div className="disPlaySectionGuide">
+                    <h1>NutriGenius</h1>
+                    <p>NutriGenius helps you analyze<br/>
+                        daily food source intake<br/>
+                        based on nutrition content.
+                    </p>
+
+                    <button onClick={() => window.open("https://github.com/RandolphTang/NutriGenius", "_blank")}>
+                        <FaGithub />
+                        follow our update on GitHub
+                    </button>
+
+                </div>
+
+                <DynamicPieChart data={datasets[currentIndex]}/>
+            </div>
+        );
+    }
+
 
     return (
-        <div style={{textAlign: 'center', marginTop: '50px'}}>
-            <h1>Welcome to Our Homepage</h1>
-            <p><strong>Mr.</strong> {userData.name}</p>
-            <p>This is a simple homepage component in React.</p>
-            <button onClick={handleRedirect} style={{fontSize: '16px', padding: '10px 20px', cursor: 'pointer'}}>
-                userprofile
-            </button>
+        <div>
+            <TitleSection/>
+            <CarouselComponent/>
+
         </div>
-    );
-};
+    )
+
+}
 
 export default HomePage;

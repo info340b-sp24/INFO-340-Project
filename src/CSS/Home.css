@@ -1,0 +1,113 @@
+body {
+    background: linear-gradient(to right, #E5E91B, #D04216);
+}
+
+
+.webTitleSection {
+    margin-top: auto;
+    position: relative;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin-bottom: 10%;
+}
+
+
+.webTitleHeader{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 2;
+    color: white;
+    font-size: 10vw;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.6);
+    transition: opacity 1.2s ease-in-out;
+}
+
+
+.webTitleImg {
+    width: 40vw;
+    height: auto;
+    object-fit: contain;
+    z-index: 1;
+    transition: opacity 1.2s ease-in-out;
+}
+
+.links-Titlesection {
+    position: absolute;
+    bottom: 0;
+    right: 1%;
+}
+
+.links-Titlesection a {
+    margin-left: 30px;
+    color: white;
+}
+
+@media (max-width: 576px) {
+    .webTitleImg {
+        max-width: 30%;
+        max-height: 30%;
+    }
+}
+
+.disPlaySection {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 5%;
+}
+
+.disPlaySectionGuide {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: 35px;
+    text-align: center;
+}
+
+.disPlaySectionGuide h1 {
+    margin: 0;
+    background: linear-gradient(to right, #FAFF00, #0191FA);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: transparent;
+}
+
+.disPlaySectionGuide button {
+    margin-top: 10%;
+    font-size: 30px;
+    color: white;
+    background-color: #F4A460;
+    opacity: 70%;
+    box-sizing: border-box;;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    outline: none;
+}
+
+.disPlaySectionGuide button svg {
+    color: black;
+    margin-right: 10px;
+    width: 20%;
+    height: auto;
+}
+
+.carouselDots {
+
+    flex: 0 0 auto;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    margin-left: 15%;
+    height: 100%;
+}

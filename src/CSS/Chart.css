@@ -1,0 +1,18 @@
+.chartOutput {
+    max-height: 100%;
+    width: auto;
+    margin-right: 10%;
+}
+
+.chartOutput canvas {
+    height: auto;
+    width: 25vw;
+}
+
+.chartOutputText {
+    text-align: right;
+    color: white;
+    text-shadow: 0 10px 10px #00000033;
+    font-size: 20px;
+}
+

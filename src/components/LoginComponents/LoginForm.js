@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import axios, {request} from "axios";
-import {SERVER_URL} from "../constant";
+import {FrontEnd_URL, SERVER_URL} from "../constant";
 
 function LoginForm () {
     const [email, setEmail] = useState('');
@@ -8,17 +8,25 @@ function LoginForm () {
     const [error, setError] = useState(null);
     const [isLoggedIn, setIsLoggedIn] = useState(false);
 
+    const data = {
+        email: email,
+        password: password
+    }
+
     const handleSubmit = (event, email, password) => {
         event.preventDefault();
 
         axios.post(
-            SERVER_URL + "/auth/formLogin",
-            {login: email, password: password}
-            )
-            .then((response) => {
-                window.localStorage.setItem("auth_token", response.data.token)
-            console.log(response); // handle the response as needed
-            setIsLoggedIn(true);
+            SERVER_URL + "/api/auth/formLogin",data, {
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            })
+            .then(response => {
+                localStorage.setItem('token', response.data.token);
+                console.log('Token stored:', response.data.token);
+                setIsLoggedIn(true);
+
             })
             .catch((error) => {
                 setError('Login failed. Please try again.');
@@ -26,13 +34,14 @@ function LoginForm () {
             })
     };
 
-    console.log(email);
+
 
     return (
         <div>
 
             <div>
                 <form onSubmit={handleSubmit}>
+
                     <div>
                         <label>Email:</label>
                         <input
