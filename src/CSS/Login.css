@@ -1,9 +1,86 @@
-.signupForm {
-    background-color: #61dafb;
+.login-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
 }
 
-.googleLoginInButton {
-    background-color: crimson;
-    width: 200px;
-    height: 200px;
+.login-box {
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    max-width: 30%;
+    width: 100%;
+    text-align: center;
 }
+
+.login-header {
+    background-image: url("../Data/Image/LoginBoxBackground.png");
+    opacity: 80%;
+    background-size: cover;
+    background-position: center;
+    height: 150px;
+    position: relative;
+    color: white;
+    padding: 20px 0;
+    text-align: center;
+}
+
+.login-header h2 {
+    margin: 0;
+    font-size: 50px;
+    font-weight: normal;
+    text-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.login-header h1 {
+    margin: 5px 0 0;
+    font-size: 80px;
+    font-weight: bold;
+    text-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.login-image {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+}
+
+.login-form {
+    padding: 20px;
+}
+
+.input-group {
+    margin-bottom: 15px;
+}
+
+.login-input {
+    width: 90%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 14px;
+}
+
+.login-button {
+    width: 100%;
+    padding: 10px;
+    background: linear-gradient(90deg, #ff7e5f, #feb47b);
+    border: none;
+    border-radius: 4px;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+.login-button:hover {
+    background: linear-gradient(90deg, #feb47b, #ff7e5f);
+}
+
+.login-error {
+    color: red;
+    margin-top: 10px;
+}
+

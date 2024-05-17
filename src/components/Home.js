@@ -1,18 +1,16 @@
 import React, {useEffect, useState} from 'react';
 import "../CSS/Home.css"
 import ImgTitleSection from "../Data/Image/ImgHomeTitleSection.png"
-import {SERVER_URL} from "./constant";
-import axios from "axios";
 import {FaEnvelope, FaGithub} from "react-icons/fa";
 import foods from '../Data/JSON/foodInput.json';
 import foods2 from '../Data/JSON/foodInput2.json';
 import foods3 from '../Data/JSON/foodInput3.json';
 import DynamicPieChart from "./Chart";
 
+
 function HomePage() {
 
-    const [userData, setUserData] = useState({});
-    const [isLoggedIn, setIsLoggedIn] = useState(false);
+    console.log(localStorage.getItem('currentUser'));
 
     function TitleSection() {
         return (
@@ -67,7 +65,7 @@ function HomePage() {
                                 height: '20px',
                                 width: '20px',
                                 backgroundColor: currentIndex === index ? 'grey' : 'transparent',
-                                border: '1px solid grey ',
+                                border: '1px solid rgba(128, 128, 128, 0.3)',
                                 borderRadius: '50%',
                                 margin: '5px 0',
                                 cursor: 'pointer',

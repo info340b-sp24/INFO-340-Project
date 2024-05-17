@@ -12,6 +12,7 @@ body {
     align-items: center;
     height: 100vh;
     margin-bottom: 10%;
+    border-bottom: 1px solid  rgba(0, 0, 0, 0.1);
 }
 
 
@@ -80,14 +81,16 @@ body {
 }
 
 .disPlaySectionGuide button {
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+    box-shadow: 2px 2px 4px rgba(0,0,0,0.2);;
     margin-top: 10%;
     font-size: 30px;
     color: white;
     background-color: #F4A460;
-    opacity: 70%;
+    opacity: 90%;
     box-sizing: border-box;;
     border: none;
-    padding: 10px 20px;
+    padding: 15px 25px;
     border-radius: 20px;
     display: flex;
     align-items: center;
@@ -108,6 +111,13 @@ body {
     padding: 10px;
     display: flex;
     flex-direction: column;
-    margin-left: 15%;
+    margin-left: 6%;
     height: 100%;
+
+}
+
+@media (max-width: 992px) {
+    .carouselDots {
+        display: none;
+    }
 }

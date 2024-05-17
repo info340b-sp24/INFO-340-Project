@@ -1,15 +1,9 @@
 :root {
   --navbar-text-color: black;
-  --navbar-bottom: #8D8D8D;
   --navbar-size: 10px;
   --dropdown-menu: #8D8D8D;
   --speed: 300ms;
 }
-
-.dark-mode {
-
-}
-
 
 html, body{
   height: 100%;
