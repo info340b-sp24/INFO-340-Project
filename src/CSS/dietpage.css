@@ -314,3 +314,53 @@
 .nutrient-list button.active {
     background: linear-gradient(135deg, #FF5722, #FF9800);
 }
+
+@media (max-width: 768px) {
+    .header-container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .chart-wrapper {
+        max-width: 90%;
+        margin-bottom: 20px;
+    }
+
+    .mealContainer {
+        width: 90%;
+    }
+
+    .detailed-analysis-button {
+        position: relative;
+        margin-top: 20px;
+    }
+}
+
+@media (max-width: 480px) {
+    .date-heading {
+        font-size: 2rem;
+    }
+
+    .add-food-button,
+    .add-meal-button,
+    .summary-button {
+        width: 80px;
+        padding: 8px;
+        font-size: 0.9rem;
+    }
+
+    .meal-header h3 {
+        font-size: 1rem;
+    }
+
+    .detailed-analysis-button {
+        font-size: 0.9rem;
+        padding: 8px 16px;
+    }
+
+    .modal-content,
+    .analysis-modal-content {
+        width: 95%;
+        padding: 10px;
+    }
+}
