@@ -336,7 +336,11 @@
     }
 }
 
-@media (max-width: 480px) {
+@media (max-width: 576px) {
+    .chart-wrapper {
+        display: none;
+    }
+
     .date-heading {
         font-size: 2rem;
     }
