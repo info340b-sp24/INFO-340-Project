@@ -5,13 +5,16 @@ import FoodSearchModal from './DietPage/FoodSearchModel';
 import CaloriesChart from './DietPage/CaloriesChart';
 import PieChart from './PieChart';
 import '../CSS/dietpage.css';
+import { useDiet } from './Context';
 import foodData from '../Data/JSON/foodData.json';
 
 const DietPage = () => {
-    const [meals, setMeals] = useState([{ id: 1, name: 'Meal 1', foods: [] }]);
+    const { meals, setMeals } = useDiet();
     const [showModal, setShowModal] = useState(false);
     const [currentMealId, setCurrentMealId] = useState(null);
     const [date, setDate] = useState(new Date().toLocaleDateString());
+    const [showDetailedAnalysis, setShowDetailedAnalysis] = useState(false);
+
 
     const addMeal = () => {
         const newMealId = meals.length ? meals[meals.length - 1].id + 1 : 1;
@@ -73,28 +76,37 @@ const DietPage = () => {
 
     return (
         <div className="diet-page">
-            <h2 className="date-heading">Here is your diet for {date}</h2>
-            <div className="chart-container">
-                <div className="chart-wrapper">
-                    <CaloriesChart meals={meals} />
-                </div>
-                <div className="chart-wrapper">
-                    <PieChart data={totalNutrients} />
-                </div>
+            <div className="header-container">
+                <h2 className="date-heading">Diet for {date}</h2>
+                <button className="detailed-analysis-button" onClick={() => setShowDetailedAnalysis(true)}>
+                    See Detailed Analysis
+                </button>
             </div>
-            <DietInfo totalNutrients={totalNutrients} />
+            <div className="chart-container">
+                <CaloriesChart meals={meals}/>
+                <PieChart data={totalNutrients}/>
+            </div>
+            {showDetailedAnalysis && (
+                <div className="analysis-modal-content">
+                    <span className="close" onClick={() => setShowDetailedAnalysis(false)}>&times;</span>
+                    <div className="summary-container">
+                        <DietInfo totalNutrients={totalNutrients}/>
+                    </div>
+                </div>
+            )}
             <div className="mealContainer">
                 {meals.map(meal => (
-                    <Meal
-                        key={meal.id}
-                        meal={meal}
-                        onRemove={() => removeMeal(meal.id)}
-                        onAddFood={() => openModal(meal.id)}
-                        onRemoveFood={removeFoodFromMeal}
-                    />
+                    <div className="meal-box" key={meal.id}>
+                        <Meal
+                            meal={meal}
+                            onRemove={() => removeMeal(meal.id)}
+                            onAddFood={() => openModal(meal.id)}
+                            onRemoveFood={removeFoodFromMeal}
+                        />
+                    </div>
                 ))}
             </div>
-            <button className="add-food-button" onClick={addMeal}>Add Meal</button>
+            <button className="add-meal-button" onClick={addMeal}>Add Meal</button>
             <FoodSearchModal
                 show={showModal}
                 onClose={closeModal}

@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { essentialNutrients, additionalNutrients } from './constants';
+import { MdExpandMore } from "react-icons/md";
 
 const DietInfo = ({ totalNutrients }) => {
     const [showMore, setShowMore] = useState(false);
@@ -28,19 +29,25 @@ const DietInfo = ({ totalNutrients }) => {
                     className={`show-more-button ${showMore ? 'clicked' : ''}`}
                     onClick={() => setShowMore(!showMore)}
                 >
-                    Show More Nutrients
+                    <MdExpandMore />
                 </button>
                 {showMore && (
-                    <div className="nutrient-popup">
-                        {additionalNutrients.map(nutrient => (
-                            <button
-                                key={nutrient}
-                                className={selectedNutrients.includes(nutrient) ? 'active' : ''}
-                                onClick={() => handleToggleNutrient(nutrient)}
-                            >
-                                {nutrient.replace('_', ' ')}
-                            </button>
-                        ))}
+                    <div className="nutrient-modal">
+                        <div className="nutrient-modal-content">
+                            <span className="close" onClick={() => setShowMore(false)}>&times;</span>
+                            <h2>Select Additional Nutrients</h2>
+                            <div className="nutrient-list">
+                                {additionalNutrients.map(nutrient => (
+                                    <button
+                                        key={nutrient}
+                                        className={`nutrient-button ${selectedNutrients.includes(nutrient) ? 'active' : ''}`}
+                                        onClick={() => handleToggleNutrient(nutrient)}
+                                    >
+                                        {nutrient.replace('_', ' ')}
+                                    </button>
+                                ))}
+                            </div>
+                        </div>
                     </div>
                 )}
             </div>
