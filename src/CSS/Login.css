@@ -20,7 +20,7 @@
     opacity: 80%;
     background-size: cover;
     background-position: center;
-    height: 150px;
+    height: 200px;
     position: relative;
     color: white;
     padding: 20px 0;
@@ -84,3 +84,48 @@
     margin-top: 10px;
 }
 
+@media (max-width: 768px) {
+    .login-box {
+        max-width: 60%;
+    }
+
+    .login-header h2 {
+        font-size: 40px;
+    }
+
+    .login-header h1 {
+        font-size: 60px;
+    }
+
+    .login-input {
+        width: 100%;
+    }
+
+    .login-button {
+        font-size: 14px;
+    }
+}
+
+@media (max-width: 480px) {
+    .login-box {
+        max-width: 90%;
+    }
+
+    .login-header h2 {
+        font-size: 30px;
+    }
+
+    .login-header h1 {
+        font-size: 40px;
+    }
+
+    .login-input {
+        width: 100%;
+        font-size: 12px;
+    }
+
+    .login-button {
+        font-size: 14px;
+        padding: 8px;
+    }
+}

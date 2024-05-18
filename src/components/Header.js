@@ -40,8 +40,10 @@ function NavigationBar() {
             {!isMobile && (<>
                 <NavItem text="Diet" route="/Diet" tooltip="Diet Navigation" closeExpand={closeExpand} />
                 <NavItem text="Learn" route="/Learn" tooltip="Learn Navigation" closeExpand={closeExpand} />
-                <NavItem text="Discover" route="/Discover" tooltip="Discovery Navigation" closeExpand={closeExpand} /></>
+               </>
             )}
+
+            {/*<NavItem text="Discover" route="/Discover" tooltip="Discovery Navigation" closeExpand={closeExpand} />*/}
 
             {isMobile && (
                 <NavExpandItem

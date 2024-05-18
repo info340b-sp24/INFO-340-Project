@@ -1,3 +1,9 @@
+.app-container {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
 footer {
     display: flex;
     background: linear-gradient(to right, #420731, #A8117E);

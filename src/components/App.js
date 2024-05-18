@@ -1,12 +1,11 @@
 import React from 'react';
 import { Route, Routes } from "react-router-dom";
-import "../CSS/App.css"
+import "../CSS/Footer.css"
 import NavigationBar from './Header';
 import Home from './Home';
 import LoginPage from './LoginPage';
 import Profile from './Profile'
-// import Learn from './Learn';
-// import Discover from './Discover';
+import QuizPage from './Learn';
 import Footer from './Footer';
 import { ContextProvider } from './Context';
 import Users from '../Data/JSON/users.json';
@@ -22,6 +21,7 @@ function App() {
                     <Route path="/Login" element={<LoginPage users={Users} />} />
                     <Route path="/Profile" element={<Profile />} />
                     <Route path="/Diet" element={<Diet />} />
+                    <Route path="/Learn" element={<QuizPage />} />
                 </Routes>
             </ContextProvider>
             <Footer />

@@ -21,6 +21,8 @@ const LoginPage = ({ users }) => {
         }
     };
 
+
+    //you need to login before allowed to go to other pages, login info can be found in users.json
     return (
         <div className="login-container">
             <div className="login-box">
@@ -30,8 +32,10 @@ const LoginPage = ({ users }) => {
                 </div>
                 <form onSubmit={handleLogin} className="login-form">
                     <div className="input-group">
+                        <label htmlFor="email">Username, or email</label>
                         <input
                             type="text"
+                            id="email"
                             placeholder="Username, or email"
                             value={email}
                             onChange={(e) => setEmail(e.target.value)}
@@ -39,8 +43,10 @@ const LoginPage = ({ users }) => {
                         />
                     </div>
                     <div className="input-group">
+                        <label htmlFor="password">Password</label>
                         <input
                             type="password"
+                            id="password"
                             placeholder="Password"
                             value={password}
                             onChange={(e) => setPassword(e.target.value)}
@@ -49,7 +55,6 @@ const LoginPage = ({ users }) => {
                     </div>
                     <button type="submit" className="login-button">Login</button>
                     {error && <p className="login-error">{error}</p>}
-
                 </form>
             </div>
         </div>
