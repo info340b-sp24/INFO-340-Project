@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from 'react';
-import {NavLink, useNavigate} from "react-router-dom";
-import '../CSS/Header.css'
+import {NavLink} from "react-router-dom";
+import '../../CSS/Header.css'
 import { CSSTransition } from "react-transition-group";
 import { FaUser, FaHome, FaPen  } from "react-icons/fa";
 import { RiArrowDropDownLine } from "react-icons/ri";
@@ -39,11 +39,9 @@ function NavigationBar() {
 
             {!isMobile && (<>
                 <NavItem text="Diet" route="/Diet" tooltip="Diet Navigation" closeExpand={closeExpand} />
-                <NavItem text="Learn" route="/Learn" tooltip="Learn Navigation" closeExpand={closeExpand} />
+                <NavItem text="Discovery" route="/Discovery" tooltip="Discovery Navigation" closeExpand={closeExpand} />
                </>
             )}
-
-            {/*<NavItem text="Discover" route="/Discover" tooltip="Discovery Navigation" closeExpand={closeExpand} />*/}
 
             {isMobile && (
                 <NavExpandItem
@@ -56,7 +54,7 @@ function NavigationBar() {
                 </NavExpandItem>
             )}
 
-            <NavItem route="/Login" tooltip="Home Navigation" logo= {<FaUser />} closeExpand={closeExpand} />
+            <NavItem route="/UserAuth" tooltip="Home Navigation" logo= {<FaUser />} closeExpand={closeExpand} />
         </Navbar>
     )
 
@@ -73,24 +71,9 @@ function Navbar(props) {
 function NavItem(props) {
     const { text, route, tooltip, logo} = props;
 
-    const navigate = useNavigate();
-    const handleLoginClick = (event) => {
-        event.preventDefault(); // Prevent default behavior of NavLink
-
-        const currentUser = JSON.parse(localStorage.getItem('currentUser'));
-        if (route === "/Login" && currentUser) {
-            navigate('/Profile');
-        } else if (!currentUser) {
-            navigate('/Login');
-        } else {
-            navigate(route);
-        }
-    };
-
-
     return (
         <li className="nav-item" onClick={props.closeExpand}>
-            <NavLink to={route} onClick={handleLoginClick}>
+            <NavLink to={route}>
                 <div
                     className={"text-content" + (tooltip ? " tooltip" : "")}
                     data-tooltip={tooltip}
@@ -121,14 +104,6 @@ function NavExpandItem(props) {
 
 function DropdownMenu(props) {
     const [activeMenu, setActiveMenu] = useState("main");
-    // const [menuHeight, setMenuHeight] = useState(0);
-    //
-    // function getHeight(elem) {
-    //     const height = elem.offsetHeight;
-    //     console.log(height);
-    //     console.log("can you see me ");
-    //     setMenuHeight(height);
-    // }
 
     function DropdownItem(props) {
         return (
@@ -162,9 +137,6 @@ function DropdownMenu(props) {
                         <DropdownItem leftIcon={<GiFruitBowl />}>
                             Diet
                         </DropdownItem>
-                    </NavLink>
-                    <NavLink to="/Learn" onClick={props.closeExpand}>
-                        <DropdownItem leftIcon={<FaPen />}>Learn</DropdownItem>
                     </NavLink>
                     <NavLink to="/Discovery" onClick={props.closeExpand}>
                         <DropdownItem leftIcon={<IoEyeSharp />}>Join Now</DropdownItem>

@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@firebase/database": "^1.0.5",
     "@testing-library/jest-dom": "^5.17.0",
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
@@ -11,6 +12,7 @@
     "chart.js": "^4.4.2",
     "chartjs-plugin-datalabels": "^2.2.0",
     "classnames": "^2.5.1",
+    "firebase": "^10.12.1",
     "js-cookie": "^3.0.5",
     "react": "^18.3.1",
     "react-chartjs-2": "^5.2.0",

@@ -70,22 +70,31 @@ const DietPage = () => {
         return acc;
     }, { Energy_kcal: 0, Protein_g: 0, Fat_g: 0, Carb_g: 0 });
 
+    const mealList = meals.map(meal => (
+        <div className="meal-box" key={meal.id}>
+            <Meal
+                meal={meal}
+                onRemove={() => removeMeal(meal.id)}
+                onAddFood={() => openModal(meal.id)}
+                onRemoveFood={removeFoodFromMeal}
+            />
+        </div>
+    ));
+
     useEffect(() => {
         setDate(new Date().toLocaleDateString());
     }, []);
 
     return (
         <div className="diet-page">
+
             <div className="header-container">
                 <h2 className="date-heading">Diet for {date}</h2>
                 <button className="detailed-analysis-button" onClick={() => setShowDetailedAnalysis(true)}>
                     See Detailed Analysis
                 </button>
             </div>
-            <div className="chart-container">
-                <CaloriesChart meals={meals}/>
-                <PieChart data={totalNutrients}/>
-            </div>
+
             {showDetailedAnalysis && (
                 <div className="analysis-modal-content">
                     <span className="close" onClick={() => setShowDetailedAnalysis(false)}>&times;</span>
@@ -94,24 +103,24 @@ const DietPage = () => {
                     </div>
                 </div>
             )}
-            <div className="mealContainer">
-                {meals.map(meal => (
-                    <div className="meal-box" key={meal.id}>
-                        <Meal
-                            meal={meal}
-                            onRemove={() => removeMeal(meal.id)}
-                            onAddFood={() => openModal(meal.id)}
-                            onRemoveFood={removeFoodFromMeal}
-                        />
-                    </div>
-                ))}
-            </div>
+
             <button className="add-meal-button" onClick={addMeal}>Add Meal</button>
+
+            <div className="chart-container">
+                <CaloriesChart meals={meals}/>
+                <PieChart data={totalNutrients}/>
+            </div>
+
+            <div className="mealContainer">
+                {mealList}
+            </div>
+
             <FoodSearchModal
                 show={showModal}
                 onClose={closeModal}
                 onAddFood={addFoodToMeal}
             />
+
         </div>
     );
 };

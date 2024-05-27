@@ -1,15 +1,13 @@
 import React from 'react';
 import { Route, Routes } from "react-router-dom";
 import "../CSS/Footer.css"
-import NavigationBar from './Header';
+import NavigationBar from './NavigationComp/Header';
+import Footer from './NavigationComp/Footer';
 import Home from './Home';
-import LoginPage from './LoginPage';
-import Profile from './Profile'
-import QuizPage from './Learn';
-import Footer from './Footer';
-import { ContextProvider } from './Context';
-import Users from '../Data/JSON/users.json';
 import Diet from "./DietPage";
+import UserProfileAuth from './UserAuth'
+import QuizPage from './Learn';
+import { ContextProvider } from './Context';
 
 function App() {
     return (
@@ -18,10 +16,9 @@ function App() {
             <ContextProvider>
                 <Routes>
                     <Route index element={<Home />} />
-                    <Route path="/Login" element={<LoginPage users={Users} />} />
-                    <Route path="/Profile" element={<Profile />} />
+                    <Route path="/UserAuth" element={<UserProfileAuth />} />
                     <Route path="/Diet" element={<Diet />} />
-                    <Route path="/Learn" element={<QuizPage />} />
+                    <Route path="/Discovery" element={<QuizPage />} />
                 </Routes>
             </ContextProvider>
             <Footer />

@@ -1,131 +1,40 @@
-.login-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-}
-
-.login-box {
-    background: white;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    overflow: hidden;
-    max-width: 30%;
-    width: 100%;
-    text-align: center;
-}
-
-.login-header {
-    background-image: url("../Data/Image/LoginBoxBackground.png");
-    opacity: 80%;
-    background-size: cover;
-    background-position: center;
-    height: 200px;
-    position: relative;
-    color: white;
-    padding: 20px 0;
-    text-align: center;
-}
-
-.login-header h2 {
-    margin: 0;
-    font-size: 50px;
-    font-weight: normal;
-    text-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-}
-
-.login-header h1 {
-    margin: 5px 0 0;
-    font-size: 80px;
-    font-weight: bold;
-    text-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-}
-
-.login-image {
-    width: 100%;
-    height: auto;
-    object-fit: cover;
-}
-
-.login-form {
+.auth-form {
+    width: 300px;
+    margin: 50px auto;
     padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    background-color: #fff;
 }
 
-.input-group {
-    margin-bottom: 15px;
+.auth-form form {
+    display: flex;
+    flex-direction: column;
 }
 
-.login-input {
-    width: 90%;
+.auth-form input {
+    margin-bottom: 10px;
     padding: 10px;
-    border: 1px solid #ddd;
+    border: 1px solid #ccc;
     border-radius: 4px;
-    font-size: 14px;
 }
 
-.login-button {
-    width: 100%;
+.auth-form button {
     padding: 10px;
-    background: linear-gradient(90deg, #ff7e5f, #feb47b);
+    color: white;
+    background-color: #007bff;
     border: none;
     border-radius: 4px;
-    color: white;
-    font-size: 16px;
     cursor: pointer;
-    margin-top: 10px;
+    margin-top: 5px;
 }
 
-.login-button:hover {
-    background: linear-gradient(90deg, #feb47b, #ff7e5f);
+.auth-form button:hover {
+    background-color: #0056b3;
 }
 
-.login-error {
+.error {
     color: red;
+    font-size: 0.8rem;
     margin-top: 10px;
-}
-
-@media (max-width: 768px) {
-    .login-box {
-        max-width: 60%;
-    }
-
-    .login-header h2 {
-        font-size: 40px;
-    }
-
-    .login-header h1 {
-        font-size: 60px;
-    }
-
-    .login-input {
-        width: 100%;
-    }
-
-    .login-button {
-        font-size: 14px;
-    }
-}
-
-@media (max-width: 480px) {
-    .login-box {
-        max-width: 90%;
-    }
-
-    .login-header h2 {
-        font-size: 30px;
-    }
-
-    .login-header h1 {
-        font-size: 40px;
-    }
-
-    .login-input {
-        width: 100%;
-        font-size: 12px;
-    }
-
-    .login-button {
-        font-size: 14px;
-        padding: 8px;
-    }
 }
