@@ -9,8 +9,8 @@ const CaloriesChart = ({ meals }) => {
 
     meals.forEach(meal => {
         meal.foods.forEach(food => {
-            labels.push(food.Descrip);
-            data.push(food.Energy_kcal);
+            labels.push(food.key);
+            data.push(food.Calories);
         });
     });
 

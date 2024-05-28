@@ -19,7 +19,8 @@ const UserProfileAuth = () => {
         const db = getDatabase();
         set(ref(db, 'users/' + userId), {
             email: email,
-            lastLogin: Date.now()
+            lastLogin: Date.now(),
+            calorieGoal: 0
         })
             .then(() => {
                 console.log("Data saved successfully!");
@@ -64,7 +65,9 @@ const UserProfileAuth = () => {
         return (
             <div>
                 <h1>Profile Page</h1>
-                <p>Welcome, {user.email}</p>
+                <p>Welcome, {user.email}</p> <br/>
+
+                <p>Your daily calorie goal:</p>
                 <button onClick={handleLogout}>Logout</button>
             </div>
         );
