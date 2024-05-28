@@ -74,7 +74,7 @@ const UserProfileAuth = () => {
     return (
         <div className="auth-form">
             <form onSubmit={handleSubmit}>
-                <h2>{isSignUp ? 'Sign Up' : 'Log In'}</h2>
+                <h2>{isSignUp ? '==Sign Up' : 'Log In'}</h2>
                 <input
                     type="email"
                     value={email}
