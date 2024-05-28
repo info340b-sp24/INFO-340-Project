@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import '../../CSS/dietpage.css'; // Import the specific CSS
+import '../../index.css'; // Import the specific CSS
 import {getDatabase, ref, onValue } from 'firebase/database';
 
 const FoodSearchModal = ({ show, onClose, onAddFood }) => {

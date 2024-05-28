@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import "../CSS/Home.css"
+import "../index.css"
 import ImgTitleSection from "../Data/Image/ImgHomeTitleSection.png"
 import {FaEnvelope, FaGithub} from "react-icons/fa";
 import foods from '../Data/JSON/foodInput.json';

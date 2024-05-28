@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import "../../CSS/Footer.css";
+import "../../index.css";
 import {FaGithub, FaEnvelope} from "react-icons/fa";
 
 function Footer() {

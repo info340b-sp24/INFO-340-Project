@@ -1,6 +1,6 @@
 import React from 'react';
 import { Route, Routes } from "react-router-dom";
-import "../CSS/Footer.css"
+import "../index.css"
 import NavigationBar from './NavigationComp/Header';
 import Footer from './NavigationComp/Footer';
 import Home from './Home';

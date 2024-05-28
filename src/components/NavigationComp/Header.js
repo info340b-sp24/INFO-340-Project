@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import {NavLink} from "react-router-dom";
-import '../../CSS/Header.css'
+import '../../index.css'
 import { CSSTransition } from "react-transition-group";
 import { FaUser, FaHome, FaPen  } from "react-icons/fa";
 import { RiArrowDropDownLine } from "react-icons/ri";

@@ -4,7 +4,7 @@ import Meal from './DietPage/Meal';
 import FoodSearchModal from './DietPage/FoodSearchModel';
 import CaloriesChart from './DietPage/CaloriesChart';
 import PieChart from './PieChart';
-import '../CSS/dietpage.css';
+import '../index.css';
 import { useDiet } from './Context';
 
 const DietPage = () => {
