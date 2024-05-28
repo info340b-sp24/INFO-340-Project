@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { getAuth, signInWithEmailAndPassword, createUserWithEmailAndPassword, onAuthStateChanged, signOut } from 'firebase/auth';
 import { getDatabase, ref, set } from 'firebase/database';
-import { app } from './firebase-config';
 
 const UserProfileAuth = () => {
     const [isSignUp, setIsSignUp] = useState(false);
@@ -10,7 +9,7 @@ const UserProfileAuth = () => {
     const [password, setPassword] = useState('');
     const [error, setError] = useState('');
 
-    const auth = getAuth(app);
+    const auth = getAuth();
 
     useEffect(() => {
         onAuthStateChanged(auth, setUser); // Listen for user state changes

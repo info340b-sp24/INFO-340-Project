@@ -1,10 +1,42 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import '../../CSS/dietpage.css'; // Import the specific CSS
-import foodData from '../../Data/JSON/foodData.json';
+import {getDatabase, ref, onValue } from 'firebase/database';
 
 const FoodSearchModal = ({ show, onClose, onAddFood }) => {
     const [query, setQuery] = useState('');
-    const filteredFoods = foodData.filter(food => food.Descrip.toLowerCase().includes(query.toLowerCase()));
+    const [foodData, setFoodData] = useState([]);
+    const [filteredFoods, setFilteredFoods] = useState([]);
+
+    useEffect(() => {
+
+        const db = getDatabase();
+        const foodRef = ref(db, 'nutrients/');
+
+        onValue(foodRef, (snapshot) => {
+            const data = snapshot.val();
+
+            if (data) {
+                const foodArray = [];
+                for (const category in data) {
+                    for (const foodName in data[category]) {
+                        const foodItem = data[category][foodName];
+                        foodItem.key = foodName;
+                        foodArray.push(foodItem);
+                    }
+                }
+                setFoodData(foodArray);
+            } else {
+                console.error("No data available at the specified path.");
+            }
+        }, (error) => {
+            console.error("Error fetching data:", error);
+        });
+    }, []);
+
+
+    useEffect(() => {
+        setFilteredFoods(foodData.filter(food => food.key.toLowerCase().includes(query.toLowerCase())));
+    }, [query, foodData]);
 
     if (!show) return null;
 
@@ -22,12 +54,13 @@ const FoodSearchModal = ({ show, onClose, onAddFood }) => {
                 <div id="food-results">
                     {filteredFoods.map((food, index) => (
                         <div key={index} className="food-item" onClick={() => onAddFood(food)}>
-                            {food.Descrip}
+                            {food.key}
                             <div className="nutrient-preview">
-                                Calories: {food.Energy_kcal}<br />
-                                Protein: {food.Protein_g}g<br />
-                                Carbs: {food.Carb_g}g<br />
-                                Fat: {food.Fat_g}g
+                                Calories: {food.Calories}<br/>
+                                Carbs: {food.Carbs}g<br/>
+                                Fat: {food.Fat}g<br/>
+                                Fiber: {food.Fiber}g<br/>
+                                Protein: {food.Protein}g
                             </div>
                         </div>
                     ))}

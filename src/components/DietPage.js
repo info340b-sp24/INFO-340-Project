@@ -6,7 +6,6 @@ import CaloriesChart from './DietPage/CaloriesChart';
 import PieChart from './PieChart';
 import '../CSS/dietpage.css';
 import { useDiet } from './Context';
-import foodData from '../Data/JSON/foodData.json';
 
 const DietPage = () => {
     const { meals, setMeals } = useDiet();
@@ -15,27 +14,36 @@ const DietPage = () => {
     const [date, setDate] = useState(new Date().toLocaleDateString());
     const [showDetailedAnalysis, setShowDetailedAnalysis] = useState(false);
 
-
-    const addMeal = () => {
-        const newMealId = meals.length ? meals[meals.length - 1].id + 1 : 1;
-        setMeals([...meals, { id: newMealId, name: `Meal ${newMealId}`, foods: [] }]);
-    };
-
-    const removeMeal = (id) => {
-        setMeals(meals.filter(meal => meal.id !== id));
-    };
-
+    //search food feature
     const openModal = (mealId) => {
+        console.log("model open");
         setCurrentMealId(mealId);
         setShowModal(true);
     };
 
     const closeModal = () => {
+        console.log("model closed");
         setShowModal(false);
         setCurrentMealId(null);
     };
+    //
+
+
+    const addMeal = () => {
+        console.log("meal added");
+        const newMealId = meals.length ? meals[meals.length - 1].id + 1 : 1;
+        setMeals([...meals, { id: newMealId, name: `Meal ${newMealId}`, foods: [] }]);
+    };
+
+    const removeMeal = (id) => {
+        console.log("meal removed");
+        setMeals(meals.filter(meal => meal.id !== id));
+    };
+
 
     const addFoodToMeal = (food) => {
+        console.log(food.key);
+        console.log("meal add to the meal");
         setMeals(meals.map(meal => {
             if (meal.id === currentMealId) {
                 return {
@@ -43,6 +51,8 @@ const DietPage = () => {
                     foods: [...meal.foods, food]
                 };
             }
+
+            console.log(meal)
             return meal;
         }));
         closeModal();
@@ -62,13 +72,15 @@ const DietPage = () => {
 
     const totalNutrients = meals.reduce((acc, meal) => {
         meal.foods.forEach(food => {
-            acc.Energy_kcal += food.Energy_kcal;
-            acc.Protein_g += food.Protein_g;
-            acc.Fat_g += food.Fat_g;
-            acc.Carb_g += food.Carb_g;
+            acc.Carbs += parseFloat(food.Carbs);
+            acc.Fat += parseFloat(food.Fat);
+            acc.Fiber += parseFloat(food.Fiber);
+            acc.Protein += parseFloat(food.Protein);
         });
+
+        console.log(acc);
         return acc;
-    }, { Energy_kcal: 0, Protein_g: 0, Fat_g: 0, Carb_g: 0 });
+    }, { Carbs: 0, Fat: 0, Fiber: 0, Protein: 0 });
 
     const mealList = meals.map(meal => (
         <div className="meal-box" key={meal.id}>
