@@ -139,7 +139,7 @@ function DropdownMenu(props) {
                         </DropdownItem>
                     </NavLink>
                     <NavLink to="/Discovery" onClick={props.closeExpand}>
-                        <DropdownItem leftIcon={<IoEyeSharp />}>Join Now</DropdownItem>
+                        <DropdownItem leftIcon={<IoEyeSharp />}>Learn</DropdownItem>
                     </NavLink>
                 </div>
             </CSSTransition>
