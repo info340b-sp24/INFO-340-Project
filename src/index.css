@@ -6,10 +6,11 @@
 }
 
 html, body {
+  font-family: 'Quicksand, sans-serif';
+  overflow-x: hidden;
   height: 100%;
   margin: 0;
   padding: 0;
-  font-family: 'Roboto', sans-serif;
 }
 
 #root {
@@ -33,7 +34,7 @@ header, footer {
   position: fixed;
   width: 100%;
   height: var(--navbar-size);
-  background-color: rgba(255, 255, 255, 0.3);
+  background-color: transparent;
   padding: 1rem 1.5rem;
   align-content: center;
   z-index: 1000;
@@ -41,15 +42,20 @@ header, footer {
 }
 
 .navbar-nav {
+  height: 60px;
   max-width: 97%;
   display: flex;
   flex-direction: row;
+  background-color: rgba(255, 255, 255, 0.7);
+  border-radius: 25px;
+  box-shadow: 0 10px 10px #00000033;
 }
 
 .nav-item {
   align-items: center;
   display: flex;
   margin-right: 20px;
+  margin-left: 20px;
   text-align: center;
 }
 
@@ -124,28 +130,22 @@ header, footer {
 .chartOutput {
   display: flex;
   justify-content: space-between;
-  max-height: 100%;
+  height: 60vh;
   width: auto;
-  margin-right: 10%;
 }
 
 .chartOutput canvas {
   margin-right: 50px;
-  height: auto;
-  width: 10vw;
 }
 
-.chartOutputText {
-  flex: 1;
-  text-align: right;
-  color: white;
-  text-shadow: 0 10px 10px #00000033;
-  font-size: 20px;
+@media (max-width: 1000px) {
+  .chartOutput {
+    height: 50vh;
+  }
 }
 
-@media (max-width: 900px) {
-  .chartOutput,
-  .chartOutputText {
+@media (max-width: 800px) {
+  .chartOutput {
       display: none;
   }
 }
@@ -162,21 +162,26 @@ header, footer {
   box-sizing: border-box;
 }
 
+.diet-page .calories-warning {
+  margin-bottom: 5%;
+  color: red;
+  font-size: 50px;
+}
+
 .date-heading {
-  background-color: #310948;
+  background: linear-gradient(to right, #0adcbe, #01bc01);
   -webkit-background-clip: text;
   background-clip: text;
-  -webkit-text-fill-color: transparent;
   color: transparent;
   font-size: 3rem;
   text-align: center;
   margin-bottom: 20px;
-  text-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  -webkit-text-stroke: 1px rgb(213, 181, 236);
 }
 
 .header-container {
+  margin-top: 5%;
   display: flex;
+  flex-direction: row;
   align-items: center;
   justify-content: space-between;
   width: 100%;
@@ -184,10 +189,27 @@ header, footer {
   margin-bottom: 20px;
 }
 
+.header-container svg {
+  width: 30px;
+  height: 30px;
+}
+
+.dietOutput{
+
+  width: 100%;
+  height: auto;
+  display: flex;
+  flex-direction: row;
+}
+
 .chart-container {
+  background-color: rgba(255, 255, 255, 0.34);
+  border-radius: 10px;
+  margin-left: 3%;
+  margin-right: 3%;
   width: 100%;
   display: flex;
-  justify-content: center;
+  flex-direction: column;
   align-items: center;
   margin-bottom: 20px;
   padding: 0 20px;
@@ -195,13 +217,14 @@ header, footer {
 
 .chart-wrapper {
   flex-grow: 1;
-  max-width: 40%;
-  height: 400px;
+  width: 80%;
+  height: 50vh;
   background-color: #fff;
   border-radius: 10px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   padding: 20px;
-  margin: 0 10px;
+  margin-top: 10%;
+  margin-bottom: 10%;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -209,20 +232,29 @@ header, footer {
 
 .diet-intake {
   display: flex;
-  justify-content: space-around;
-  width: 100%;
+  overflow-x: scroll;
+  justify-content: space-between;
+  width: auto;
   margin-bottom: 20px;
 }
 
+.diet-intake div {
+  margin-left: 5%;
+}
+
+
 .mealContainer {
-  width: 70%;
+  background-color: rgba(255, 255, 255, 0.34);
+  margin-left: 3%;
+  border-radius: 10px;
+  width: 90%;
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
 .meal-box {
-  width: 100%;
+  width: 90%;
   background-color: #fff;
   border-radius: 10px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -261,7 +293,6 @@ header, footer {
 }
 
 .add-food-button,
-.add-meal-button,
 .summary-button {
   width: 100px;
   background: linear-gradient(to right, #420731, #A8117E);
@@ -291,7 +322,6 @@ header, footer {
 
 .show-more-button:hover,
 .add-food-button:hover,
-.add-meal-button:hover,
 .summary-button:hover {
   background: linear-gradient(to right, #420731, #A8117E);
   transform: translateY(-2px);
@@ -385,11 +415,26 @@ header, footer {
   border-bottom: 1px solid #eee;
   cursor: pointer;
   display: flex;
+  flex-direction: row;
   justify-content: space-between;
+}
+
+.food-item button {
+  background: transparent;
+  border: none;
+}
+
+.food-item button svg {
+  width: 25px;
+  height: 25px;
 }
 
 .food-item:hover {
   background-color: #f0f0f0;
+}
+
+.food-item div {
+  margin-right: 10%;
 }
 
 .nutrient-preview {
@@ -449,7 +494,12 @@ header, footer {
 }
 
 @media (max-width: 768px) {
+
+  .dietOutput {
+    margin: 0;
+  }
   .header-container {
+      margin-top: 10%;
       flex-direction: column;
       align-items: center;
   }
@@ -470,7 +520,7 @@ header, footer {
 }
 
 @media (max-width: 576px) {
-  .chart-wrapper {
+  .chart-wrapper, .chart-container {
       display: none;
   }
 
@@ -479,7 +529,6 @@ header, footer {
   }
 
   .add-food-button,
-  .add-meal-button,
   .summary-button {
       width: 80px;
       padding: 8px;
@@ -511,14 +560,11 @@ header, footer {
 
 footer {
   display: flex;
+  position: static;
   background: linear-gradient(to right, #420731, #A8117E);
   padding: 20px;
   margin-top: auto;
   bottom: 0;
-}
-
-.og-footer {
-  margin-bottom: 0;
 }
 
 .footer-contents-container {
@@ -589,16 +635,21 @@ ul {
 }
 
 a {
-  color: var(--navbar-text-color);
+  color: black;
   text-decoration: none;
   font-size: 30px;
+}
+
+a:hover {
+  color: #66cd03;
+  transition: ease-in-out 0.1s;
 }
 
 .navbar {
   position: fixed;
   width: 100%;
   height: var(--navbar-size);
-  background-color: rgba(255, 255, 255, 0.3);
+  background-color: transparent;
   padding: 1rem 1.5rem;
   align-content: center;
   z-index: 1000;
@@ -606,7 +657,7 @@ a {
 }
 
 .navbar-nav {
-  max-width: 97%;
+  max-width: 95%;
   display: flex;
   flex-direction: row;
 }
@@ -675,20 +726,21 @@ a {
 }
 
 @media (max-width: 768px) {
+
   .navbar-nav {
-      flex-direction: column;
+      flex-direction: row;
       align-items: center;
   }
 
   .navbar-nav li {
-      margin: 10px 0;
+      margin: 10px;
   }
 }
 
 /* login.css */
 .auth-form {
+  margin: auto;
   width: 300px;
-  margin: 50px auto;
   padding: 20px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   border-radius: 8px;
@@ -947,6 +999,10 @@ a {
   padding: 20px;
 }
 
+.learn-page h1 {
+  color: white;
+}
+
 .learn-heading {
   font-size: 2.5rem;
   margin-bottom: 20px;
@@ -1013,13 +1069,57 @@ a {
   margin-bottom: 10px;
 }
 
+@keyframes clickAnimation {
+  0% {
+    transform: scale(1);
+
+  }
+  50% {
+    transform: scale(0.5);
+
+  }
+  100% {
+    transform: scale(1);
+
+  }
+}
+
+.mealContainerHeader h2 {
+  margin-left: 10px;
+  color: white;
+}
+
+.add-meal-button {
+  background: transparent;
+  border: none;
+}
+
+.add-meal-button svg:active {
+  color: #dc0a93;
+  animation: clickAnimation 2s;
+}
+
+.add-meal-button svg {
+  width: 30px;
+  height: 30px;
+}
+
+.mealContainerHeader{
+  display: flex;
+  flex-direction: row;
+}
+
+.save-currMeal-button:active {
+  animation: clickAnimation 2s;
+}
+
 .quiz-button,
 .options button,
 .save-currMeal-button {
   background: linear-gradient(to right, #9be15d, #00e3ae);
   color: white;
   border: none;
-  border-radius: 5px;
+  border-radius: 50px;
   padding: 10px 20px;
   cursor: pointer;
   font-size: 1rem;
@@ -1193,6 +1293,15 @@ a {
   position: relative;
 }
 
+.quiz-modal-content .quiz-select {
+  background: linear-gradient(to right, #72c55a, #00b489);
+  border: none;
+  font-size: 20px;
+  border-radius: 25px;
+  color: white;
+  margin-right: 10px;
+}
+
 .timer {
   margin-top: 20px;
   font-size: 1.2rem;
@@ -1206,6 +1315,7 @@ a {
   border-radius: 5px;
   padding: 5px 10px;
   cursor: pointer;
+  opacity: 0.5;
   transition: background 0.3s ease;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
   position: absolute;
@@ -1243,7 +1353,7 @@ a {
 
 /* home.css */
 body {
-  background: linear-gradient(120deg, #a6c0fe, #f68084, #fad0c4, #fbc2eb, #a18cd1, #ff9a9e);
+  background: linear-gradient(120deg, #FFE29F, #FFA99F, #FF719A, #FF7E5F, #FEA47F, #FF9E9D);
   background-size: 300% 300%;
   animation: gradientAnimation 15s ease infinite;
   margin: 0;
@@ -1317,7 +1427,7 @@ body {
 
 .disPlaySectionGuide h1 {
   margin: 0;
-  background: linear-gradient(to right, #20032f, #800d91, #ff6e6e, #19c868);
+  background: linear-gradient(to right, #2E8B57, #3CB371, #FFD700, #FFA500, #FF6347);
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -1327,10 +1437,9 @@ body {
 .disPlaySectionGuide button {
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
   box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
-  margin-top: 10%;
   font-size: 30px;
   color: white;
-  background-color: #F4A460;
+  background-color: rgba(255, 255, 255, 0.3);
   opacity: 90%;
   box-sizing: border-box;
   border: none;
@@ -1354,11 +1463,12 @@ body {
   padding: 10px;
   display: flex;
   flex-direction: column;
-  margin-left: 6%;
+  margin-left: 3%;
+  margin-right: 3%;
   height: 100%;
 }
 
-@media (max-width: 576px) {
+@media (max-width: 768px) {
   .webTitleImg {
       max-width: 30%;
       max-height: 30%;
@@ -1366,6 +1476,14 @@ body {
 
   .webTitleHeader {
       font-size: 12vw;
+  }
+
+  .disPlaySection {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 5%;
   }
 
   .disPlaySectionGuide {
@@ -1486,6 +1604,7 @@ copyright-section span {
 
 /* LearnPage.css */
 .learn-page {
+  margin-top: 5%;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -1785,3 +1904,119 @@ copyright-section span {
       font-size: 2rem;
   }
 }
+
+.profile-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 5%;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.profile-container h1{
+  background: linear-gradient(to right, #0cf1de, #25ef25);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  font-size: 5vw;
+}
+
+.profile-container h2{
+  color: white;
+  font-size: 2vw;
+}
+
+.calorieGoal {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin: auto;
+}
+
+.calorie-input {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  font-size: 1rem;
+  transition: background-color 0.3s ease;
+}
+
+.update-button, .logout-button {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  margin: 5px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.update-button {
+  background-color: #FFB347;
+  color: #fff;
+}
+
+.update-button:hover {
+  background-color: #FFA500;
+}
+
+.logout-button {
+  margin-top: 10%;
+  background-color: #FF6347;
+  color: #fff;
+}
+
+.logout-button:hover {
+  background-color: #FF4500;
+}
+
+.meals-container {
+  overflow-y: auto;
+  width: 100%;
+  height: auto;
+  background-color: rgba(255, 255, 255, 0.7);
+  border: none;
+  border-radius: 10px;
+  padding: 10px;
+  margin-top: 20px;
+}
+
+.meals-container div {
+  max-height: 300px;
+  overflow-y: scroll;
+}
+
+.meals-container div h3 {
+  color: #ff6b6b;
+  font-size: 30px;
+}
+
+.meals-container div li {
+  font-size: 15px;
+  margin: 5% auto;
+}
+
+
+.meals-container button {
+  font-size: 20px;
+  border: none;
+  border-radius: 10px;
+  background-color: #FFB347;
+  color: #fff;
+}
+
+
+@media (max-width: 768px) {
+
+  .profile-container {
+    margin: 30% auto auto;
+  }
+
+  .calorieGoal {
+    flex-direction: column;
+  }
+
+}
+
+

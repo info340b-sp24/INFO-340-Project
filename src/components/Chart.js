@@ -55,17 +55,6 @@ const DynamicPieChart = ({data}) => {
     return (
         <div className="chartOutput">
             <Doughnut data={chartData} options={options}/>.
-
-            <div className="chartOutputText">
-                {data.map((item, index) => (
-                    <p key={index}><strong>{item.name} </strong>: {item.calories} calories /
-                        {((item.calories / totalCalories) * 100).toFixed(2)}% of today's diet
-                    </p>
-                ))}
-                <p>
-                    Total Calorie: {totalCalories}
-                </p>
-            </div>
         </div>
     )
 };

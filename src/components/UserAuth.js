@@ -115,39 +115,52 @@ const UserProfileAuth = () => {
             });
     };
 
-    const renderedMeals = meals.map(([mealId, meal]) => (
-        <div key={mealId} style={{ border: '1px solid black', margin: '10px', padding: '10px' }}>
+    const renderedMeals = meals.length > 0 ? meals.map(([mealId, meal]) => (
+        <div key={mealId} style={{
+            border: '2px solid #FFB347', margin: '10px', padding: '10px', borderRadius: '10px'
+        }}>
             <h3>{meal.name}</h3>
-            <p>Foods:</p>
-            <ul>
-                {meal.foods.map((food, index) => (
-                    <li key={index}>
-                        <div>{food.key}</div>
-                        <div>Calories: {food.Calories} | Carbs: {food.Carbs}g | Fat: {food.Fat}g | Fiber: {food.Fiber}g | Protein: {food.Protein}g</div>
-                    </li>
-                ))}
-            </ul>
+            {meal.foods && meal.foods.length > 0 ? (
+                <ul>
+                    {meal.foods.map((food, index) => (
+                        <li key={index}>
+                            <div>{food.key || 'Unknown'}</div>
+                            <div>
+                                Calories: {food.Calories || 0} | Carbs: {food.Carbs || 0}g | Fat: {food.Fat || 0}g |
+                                Fiber: {food.Fiber || 0}g | Protein: {food.Protein || 0}g
+                            </div>
+                        </li>
+                    ))}
+                </ul>
+            ) : (
+                <p>No food items in this meal.</p>
+            )}
             <button onClick={() => handleDeleteMeal(mealId)}>Delete Meal</button>
         </div>
-    ));
+    )) : <p>No meals available.</p>;
 
     if (user) {
         return (
-            <div>
-                <h1>Profile Page</h1>
-                <p>Welcome, {user.email}</p>
-                <p>Your daily Calorie goal is: {calorieGoal}</p>
-                <input
-                    type="number"
-                    value={newCalorieGoal}
-                    onChange={e => setNewCalorieGoal(e.target.value)}
-                    placeholder="Set new calorie goal"
-                />
-                <button onClick={handleUpdateCalorieGoal}>Update Calorie Goal</button>
-                <button onClick={handleLogout}>Logout</button>
-                <div style={{ overflowY: 'scroll', maxHeight: '400px' }}>
+            <div className="profile-container">
+                <h1 className="welcome-message">Welcome, {user.email}</h1>
+                <h2>Your daily Calorie goal is: {calorieGoal}</h2>
+                <div className="calorieGoal">
+
+                    <input
+                        type="number"
+                        value={newCalorieGoal}
+                        onChange={e => setNewCalorieGoal(e.target.value)}
+                        placeholder="Set new calorie goal"
+                        className="calorie-input"
+                    />
+                    <button onClick={handleUpdateCalorieGoal} className="update-button">Update Calorie Goal</button>
+                </div>
+
+                <div className="meals-container">
                     {renderedMeals}
                 </div>
+
+                <button onClick={handleLogout} className="logout-button">Logout</button>
             </div>
         );
     }

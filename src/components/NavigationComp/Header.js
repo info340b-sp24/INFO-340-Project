@@ -15,7 +15,7 @@ function NavigationBar() {
 
     useEffect(() => {
         const handleResize = () => {
-            setIsMobile(window.innerWidth <= 576);
+            setIsMobile(window.innerWidth <= 768);
         };
 
         handleResize();
@@ -40,6 +40,7 @@ function NavigationBar() {
             {!isMobile && (<>
                 <NavItem text="Diet" route="/Diet" tooltip="Diet Navigation" closeExpand={closeExpand} />
                 <NavItem text="Discovery" route="/Discovery" tooltip="Discovery Navigation" closeExpand={closeExpand} />
+                    <NavItem route="/UserAuth" tooltip="Home Navigation" logo= {<FaUser />} closeExpand={closeExpand} />
                </>
             )}
 
@@ -54,7 +55,7 @@ function NavigationBar() {
                 </NavExpandItem>
             )}
 
-            <NavItem route="/UserAuth" tooltip="Home Navigation" logo= {<FaUser />} closeExpand={closeExpand} />
+
         </Navbar>
     )
 
@@ -140,6 +141,9 @@ function DropdownMenu(props) {
                     </NavLink>
                     <NavLink to="/Discovery" onClick={props.closeExpand}>
                         <DropdownItem leftIcon={<IoEyeSharp />}>Learn</DropdownItem>
+                    </NavLink>
+                    <NavLink to="/UserAuth" onClick={props.closeExpand}>
+                        <DropdownItem leftIcon= {<FaUser />}>User</DropdownItem>
                     </NavLink>
                 </div>
             </CSSTransition>

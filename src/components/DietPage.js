@@ -7,6 +7,9 @@ import PieChart from './PieChart';
 import { useDiet } from './Context';
 import {getDatabase, ref, set, onValue} from 'firebase/database';
 import {getAuth} from 'firebase/auth';
+import { FaSave } from "react-icons/fa";
+import { MdOutlineCalculate } from "react-icons/md";
+import { IoIosAddCircle } from "react-icons/io";
 import '../index.css';
 
 
@@ -141,12 +144,14 @@ const DietPage = () => {
                 const existingMeals = snapshot.val() || [];
                 const updatedMeals = [...existingMeals, ...meals];
 
+                console.log(updatedMeals);
+
                 set(mealsRef, updatedMeals)
                     .then(() => {
-                        console.log('Meals saved successfully.');
+                        alert('Meal saved successfully!');
                     })
                     .catch((error) => {
-                        console.error('Error saving meals:', error);
+                        alert('Something wrong here');
                     });
             }, {
                 onlyOnce: true
@@ -157,25 +162,28 @@ const DietPage = () => {
     };
 
     useEffect(() => {
-        setDate(new Date().toLocaleDateString());
+        const options = { month: 'long', day: 'numeric' };
+        setDate(new Date().toLocaleDateString(undefined, options));
     }, []);
 
     return (
         <div className="diet-page">
 
             <div className="header-container">
-                <h2 className="date-heading">Diet for {date}</h2>
-
-                {isCloseToGoal && <p className="calories-warning">Warning: You are over your calorie goal!</p>}
 
                 <button className="detailed-analysis-button" onClick={() => setShowDetailedAnalysis(true)}>
-                    See Detailed Analysis
+                    <MdOutlineCalculate/>
                 </button>
+
+
+                <h1 className="date-heading">{date}</h1>
+
                 <button className="save-currMeal-button" onClick={saveCurrentMeals}>
-                    Save Current Meals
+                    <FaSave/>
                 </button>
             </div>
 
+            {isCloseToGoal && <p className="calories-warning">Warning: You are over your calorie goal!</p>}
 
 
             {showDetailedAnalysis && (
@@ -187,15 +195,20 @@ const DietPage = () => {
                 </div>
             )}
 
-            <button className="add-meal-button" onClick={addMeal}>Add Meal</button>
+            <div className="dietOutput">
 
-            <div className="chart-container">
-                <CaloriesChart meals={meals}/>
-                <PieChart data={totalNutrients}/>
-            </div>
+                <div className="mealContainer">
+                    <div className="mealContainerHeader">
+                        <button className="add-meal-button" onClick={addMeal}><IoIosAddCircle/></button>
+                        <h2>Your Daily Meals</h2>
+                    </div>
+                    {mealList}
+                </div>
 
-            <div className="mealContainer">
-                {mealList}
+                <div className="chart-container">
+                    <CaloriesChart meals={meals}/>
+                    <PieChart data={totalNutrients}/>
+                </div>
             </div>
 
             <FoodSearchModal

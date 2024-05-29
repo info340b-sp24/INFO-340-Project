@@ -64,13 +64,12 @@ function HomePage() {
                             style={{
                                 height: '20px',
                                 width: '20px',
-                                backgroundColor: currentIndex === index ? 'grey' : 'transparent',
-                                border: '1px solid rgba(128, 128, 128, 0.3)',
+                                backgroundColor: currentIndex === index ? '#6B8E23' : '#F5F5DC', // Olive green for active, beige for inactive
+                                border: 'transparent',
                                 borderRadius: '50%',
                                 margin: '5px 0',
                                 cursor: 'pointer',
                                 marginLeft: '20%'
-
                             }}
                             onClick={() => handleDotClick(index)}
                         ></span>
@@ -79,13 +78,13 @@ function HomePage() {
 
                 <div className="disPlaySectionGuide">
                     <h1>NutriGenius</h1>
-                    <p>NutriGenius helps you analyze<br/>
-                        daily food source intake<br/>
+                    <p>NutriGenius helps you<br/>
+                        analyze daily food source<br/>
                         based on nutrition content.
                     </p>
 
                     <button onClick={() => window.open("https://github.com/RandolphTang/NutriGenius", "_blank")}>
-                        <FaGithub />
+                        <FaGithub/>
                         follow our update on GitHub
                     </button>
 

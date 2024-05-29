@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import { essentialNutrients, additionalNutrients } from './constants';
 import { MdExpandMore } from "react-icons/md";
+import { CiCircleRemove } from "react-icons/ci";
+import { FaPen } from "react-icons/fa";
 
 const Meal = ({ meal, onRemove, onAddFood, onRemoveFood }) => {
     const [showMore, setShowMore] = useState(false);
@@ -50,7 +52,7 @@ const Meal = ({ meal, onRemove, onAddFood, onRemoveFood }) => {
                 Calories: {food.Calories} | Carbs: {food.Carbs}g
                 | Fat: {food.Fat}g | Fiber: {food.Fiber}g | Protein: {food.Protein}g
             </div>
-            <button className="remove-food" onClick={() => onRemoveFood(meal.id, index)}>-</button>
+            <button className="remove-food" onClick={() => onRemoveFood(meal.id, index)}><CiCircleRemove/></button>
         </div>
     ));
 
@@ -77,7 +79,7 @@ const Meal = ({ meal, onRemove, onAddFood, onRemoveFood }) => {
                         autoFocus
                     />
                 ) : (
-                    <h3 onClick={() => setIsEditingName(true)}>{mealName} <span role="img" aria-label="edit">✏️</span></h3>
+                    <h3 onClick={() => setIsEditingName(true)}>{mealName} <span role="img" aria-label="edit"><FaPen/></span></h3>
                 )}
                 <button className="remove-meal" onClick={onRemove}>Remove Meal</button>
             </div>
