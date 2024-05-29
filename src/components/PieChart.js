@@ -5,11 +5,20 @@ import { Chart, ArcElement, Tooltip, Legend } from 'chart.js';
 Chart.register(ArcElement, Tooltip, Legend);
 
 const PieChart = ({ data }) => {
+
+    const filteredData = Object.keys(data).reduce((acc, key) => {
+        if (key.toLowerCase() !== 'calories') {
+            acc[key] = data[key];
+        }
+        return acc;
+    }, {});
+
     const chartData = {
-        labels: Object.keys(data),
+
+        labels: Object.keys(filteredData),
         datasets: [
             {
-                data: Object.values(data),
+                data: Object.values(filteredData),
                 backgroundColor: [
                     '#FF6384',
                     '#36A2EB',

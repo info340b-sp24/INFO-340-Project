@@ -25,14 +25,14 @@ const DynamicPieChart = ({data}) => {
 
     const backgroundColors = data.map(() => commonColors[Math.floor(Math.random() * commonColors.length)]);
 
-    const totalCalories = data.reduce((acc, item) => acc + item.calories, 0);
+    const totalCalories = data.reduce((acc, item) => acc + item.Calories, 0);
 
 
     const chartData  = {
         labels: data.map(item => item.name),
         datasets: [
             {
-                data: data.map(item => item.calories),
+                data: data.map(item => item.Calories),
                 backgroundColor: backgroundColors,
                 borderColor: backgroundColors.map(color => color.replace('0.7', '1')),
                 borderWidth: 1
@@ -58,8 +58,8 @@ const DynamicPieChart = ({data}) => {
 
             <div className="chartOutputText">
                 {data.map((item, index) => (
-                    <p key={index}><strong>{item.name} </strong>: {item.calories} calories /
-                        {((item.calories / totalCalories) * 100).toFixed(2)}% of today's diet
+                    <p key={index}><strong>{item.key} </strong>: {item.Calories} calories /
+                        {((item.Calories / totalCalories) * 100).toFixed(2)}% of today's diet
                     </p>
                 ))}
                 <p>
