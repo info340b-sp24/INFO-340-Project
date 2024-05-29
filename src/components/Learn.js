@@ -1,10 +1,12 @@
 import React, { useState } from 'react';
-import '../index.css';
 import Flashcard from './Flashcard';
+import Quiz from './Quiz';
+import '../index.css';
 
 const LearnPage = () => {
     const [flashcardContent, setFlashcardContent] = useState([]);
     const [isFlashcardVisible, setIsFlashcardVisible] = useState(false);
+    const [isQuizVisible, setIsQuizVisible] = useState(false);
 
     const showFlashcard = (content) => {
         setFlashcardContent(content);
@@ -13,6 +15,14 @@ const LearnPage = () => {
 
     const hideFlashcard = () => {
         setIsFlashcardVisible(false);
+    };
+
+    const showQuiz = () => {
+        setIsQuizVisible(true);
+    };
+
+    const hideQuiz = () => {
+        setIsQuizVisible(false);
     };
 
     const weightLossContent = [
@@ -74,8 +84,20 @@ const LearnPage = () => {
                     <button onClick={() => showFlashcard(pediatricsContent)}>Learn About Pediatrics</button>
                 </div>
             </div>
+            <div className="quiz-section">
+                <h2 className="quiz-heading">Quizzes</h2>
+                <p>Would you like to take a timed 2-minute quiz?</p>
+                <button className="quiz-button" onClick={showQuiz}>Start Quiz</button>
+            </div>
             {isFlashcardVisible && (
                 <Flashcard content={flashcardContent} onClose={hideFlashcard} />
+            )}
+            {isQuizVisible && (
+                <div className="quiz-modal">
+                    <div className="quiz-modal-content">
+                        <Quiz onClose={hideQuiz} />
+                    </div>
+                </div>
             )}
         </div>
     );
