@@ -1445,13 +1445,54 @@ body {
 
 .disPlaySectionGuide h1 {
   margin: 0;
-  background: linear-gradient(to right, #2E8B57, #3CB371, #FFD700, #FFA500, #FF6347);
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
-  color: transparent;
+  font-size: 3rem; /* Adjust as needed */
+  padding: 1rem 2rem; /* Adjust as needed */
+  color: rgb(0, 0, 0);
+  text-shadow: 0 1px 0 #000;
+  position: relative;
+  display: inline-block;
+  background-color: #8ec5fc; /* Pastel background color */
+  z-index: 1;
+  border: 2px solid white; /* Solid white border to enhance visibility */
+
+  --border-angle: 0turn; /* For animation. */
+  --main-bg: conic-gradient(
+      from var(--border-angle),
+      #b2f5ea,
+      #b3ffeb,
+      #ffeb99,
+      #ffc29d,
+      #fdcacd
+  );
+  
+  border-radius: 2em;
+  --gradient-border: conic-gradient(from var(--border-angle), transparent 25%, #9be15d, #8ec5fc, #fbc2eb, #a18cd1, #f9ed69 99%, transparent);
+  
+  background: 
+    var(--main-bg) padding-box,
+    var(--gradient-border) border-box,
+    var(--main-bg) border-box;
+  
+  background-position: center center;
+  animation: bg-spin 3s linear infinite;
 }
 
+@keyframes bg-spin {
+  to {
+    --border-angle: 1turn;
+  }
+}
+
+
+.disPlaySectionGuide h1:hover {
+  animation-play-state: paused;
+}
+
+@property --border-angle {
+  syntax: "<angle>";
+  inherits: true;
+  initial-value: 0turn;
+}
 .disPlaySectionGuide button {
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
   box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);

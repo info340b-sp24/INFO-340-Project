@@ -72,10 +72,7 @@ function HomePage() {
                 </div>
                 <div className="disPlaySectionGuide">
                     <h1>NutriGenius</h1>
-                    <p>NutriGenius helps you<br/>
-                        analyze daily food source<br/>
-                        based on nutrition content.
-                    </p>
+                    <p>NutriGenius empowers you to understand and optimize your daily diet by analyzing the nutritional content of your food. Make informed choices for a healthier lifestyle with NutriGenius.</p>
                     <button onClick={() => window.open("https://github.com/info340b-sp24/INFO-340-Project", "_blank")}>
                         <FaGithub />
                         follow our update on GitHub
@@ -95,4 +92,3 @@ function HomePage() {
 }
 
 export default HomePage;
-
