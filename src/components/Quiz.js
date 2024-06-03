@@ -8,7 +8,7 @@ const Quiz = ({ subjects, onClose }) => {
     const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
     const [score, setScore] = useState(0);
     const [showResult, setShowResult] = useState(false);
-    const [timeLeft, setTimeLeft] = useState(60);
+    const [timeLeft, setTimeLeft] = useState(30);
 
     useEffect(() => {
         if (quizStarted && timeLeft > 0) {
@@ -46,6 +46,46 @@ const Quiz = ({ subjects, onClose }) => {
                 { question: 'Which food should be limited to prevent obesity and tooth decay?', options: ['Sugary Snacks', 'Whole Grains', 'Lean Meats', 'Fiber-Rich Foods'], answer: 'Sugary Snacks' },
                 { question: 'Which nutrient aids in healing and iron absorption?', options: ['Vitamin C', 'Vitamin A', 'Vitamin D', 'Iron'], answer: 'Vitamin C' },
                 { question: 'Which type of grains should be included for better nutrition?', options: ['Whole Grains', 'High Cholesterol Foods', 'Processed Foods', 'Sugary Snacks'], answer: 'Whole Grains' }
+            ];
+        } else if (subject === "veganContent") {
+            return [
+                { question: 'Which food combination provides complete proteins?', options: ['Rice and Beans', 'Bread and Butter', 'Pasta and Cheese', 'Fruit and Yogurt'], answer: 'Rice and Beans' },
+                { question: 'What is a good plant-based source of omega-3 fatty acids?', options: ['Flaxseeds', 'Butter', 'Cheese', 'Chicken'], answer: 'Flaxseeds' },
+                { question: 'Which nutrient is not naturally found in plant foods and should be supplemented?', options: ['Vitamin B12', 'Vitamin C', 'Vitamin A', 'Iron'], answer: 'Vitamin B12' },
+                { question: 'What is an excellent plant-based protein source?', options: ['Tofu', 'Chicken', 'Fish', 'Eggs'], answer: 'Tofu' },
+                { question: 'Which food is high in iron for vegans?', options: ['Lentils', 'Beef', 'Milk', 'Cheese'], answer: 'Lentils' }
+            ];
+        } else if (subject === "healthyAgingContent") {
+            return [
+                { question: 'Which nutrient is essential for bone health in aging adults?', options: ['Calcium', 'Iron', 'Vitamin C', 'Omega-3 Fatty Acids'], answer: 'Calcium' },
+                { question: 'What is a good source of antioxidants for healthy aging?', options: ['Berries', 'Fried Foods', 'Soda', 'Candy'], answer: 'Berries' },
+                { question: 'Which type of fat should be included for heart and brain health?', options: ['Omega-3 Fatty Acids', 'Trans Fats', 'Saturated Fats', 'High Cholesterol Foods'], answer: 'Omega-3 Fatty Acids' },
+                { question: 'Which vitamin is crucial for nerve function in older adults?', options: ['Vitamin B12', 'Vitamin C', 'Vitamin D', 'Iron'], answer: 'Vitamin B12' },
+                { question: 'What is a good dietary source of fiber for aging adults?', options: ['Whole Grains', 'White Bread', 'Soda', 'Candy'], answer: 'Whole Grains' }
+            ];
+        } else if (subject === "diabetesManagementContent") {
+            return [
+                { question: 'Which type of food helps manage blood sugar levels?', options: ['Low-Glycemic Foods', 'Sugary Snacks', 'White Bread', 'Candy'], answer: 'Low-Glycemic Foods' },
+                { question: 'What should be included in a diet to support heart health in diabetics?', options: ['Healthy Fats', 'Trans Fats', 'High Cholesterol Foods', 'Sugary Snacks'], answer: 'Healthy Fats' },
+                { question: 'Which nutrient helps control blood sugar spikes?', options: ['Fiber', 'Sugar', 'Salt', 'Fats'], answer: 'Fiber' },
+                { question: 'What is important to monitor for portion control in diabetics?', options: ['Carbohydrates', 'Proteins', 'Vitamins', 'Minerals'], answer: 'Carbohydrates' },
+                { question: 'Which beverage should be consumed to prevent dehydration in diabetics?', options: ['Water', 'Soda', 'Juice', 'Alcohol'], answer: 'Water' }
+            ];
+        } else if (subject === "heartHealthContent") {
+            return [
+                { question: 'Which type of fat supports heart health?', options: ['Healthy Fats', 'Trans Fats', 'Saturated Fats', 'High Cholesterol Foods'], answer: 'Healthy Fats' },
+                { question: 'Which food is a good source of omega-3 fatty acids?', options: ['Fish', 'Butter', 'Cheese', 'Chicken'], answer: 'Fish' },
+                { question: 'Which nutrient helps lower cholesterol levels?', options: ['Fiber', 'Sugar', 'Salt', 'Fats'], answer: 'Fiber' },
+                { question: 'What should be reduced to maintain healthy blood pressure levels?', options: ['Sodium', 'Potassium', 'Magnesium', 'Calcium'], answer: 'Sodium' },
+                { question: 'What should be combined with a healthy diet for heart health?', options: ['Regular Exercise', 'Smoking', 'Drinking', 'Stress'], answer: 'Regular Exercise' }
+            ];
+        } else if (subject === "immuneSupportContent") {
+            return [
+                { question: 'Which vitamin boosts immune function?', options: ['Vitamin C', 'Vitamin D', 'Vitamin E', 'Vitamin K'], answer: 'Vitamin C' },
+                { question: 'Which food is a good source of probiotics?', options: ['Yogurt', 'Bread', 'Pasta', 'Rice'], answer: 'Yogurt' },
+                { question: 'Which nutrient supports immune health and can be sourced from sunlight?', options: ['Vitamin D', 'Vitamin C', 'Vitamin B12', 'Iron'], answer: 'Vitamin D' },
+                { question: 'Which food is known for its immune-boosting properties?', options: ['Garlic', 'Sugar', 'Salt', 'Butter'], answer: 'Garlic' },
+                { question: 'What should be included in the diet for overall immune health?', options: ['Healthy Fats', 'Trans Fats', 'Sugary Snacks', 'Processed Foods'], answer: 'Healthy Fats' }
             ];
         } else {
             return [];
@@ -118,6 +158,11 @@ const Quiz = ({ subjects, onClose }) => {
             <option value="weightLossContent">Weight Loss</option>
             <option value="muscleGrowthContent">Muscle Growth</option>
             <option value="pediatricsContent">Pediatrics</option>
+            <option value="veganContent">Vegan and Vegetarian Nutrition</option>
+            <option value="healthyAgingContent">Healthy Aging</option>
+            <option value="diabetesManagementContent">Diabetes Management</option>
+            <option value="heartHealthContent">Heart Health</option>
+            <option value="immuneSupportContent">Immune Support</option>
         </select>
     );
 
