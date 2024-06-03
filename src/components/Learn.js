@@ -2,6 +2,9 @@ import React, { useState } from 'react';
 import Flashcard from './Flashcard';
 import Quiz from './Quiz';
 import '../index.css';
+import WeightLossImg from '../Data/Image/WeightLoss.jpg'
+import MuscleGain from '../Data/Image/muscleGain.jpg'
+import PediatricsImg from '../Data/Image/PediatricsImg.jpg'
 
 const LearnPage = () => {
     const [flashcardContent, setFlashcardContent] = useState([]);
@@ -71,16 +74,19 @@ const LearnPage = () => {
                 <div className="learn-item">
                     <h3>Weight Loss</h3>
                     <p>Nutrition tips for weight loss.</p>
+                    <img src={WeightLossImg} alt="Weight Loss"/>
                     <button onClick={() => showFlashcard(weightLossContent)}>Learn About Weight Loss</button>
                 </div>
                 <div className="learn-item">
                     <h3>Muscle Growth</h3>
                     <p>Nutrition tips for muscle growth.</p>
+                    <img src={MuscleGain} alt="Muscle Gain"/>
                     <button onClick={() => showFlashcard(muscleGrowthContent)}>Learn About Muscle Growth</button>
                 </div>
                 <div className="learn-item">
                     <h3>Pediatrics</h3>
                     <p>Nutrition tips for children.</p>
+                    <img src={PediatricsImg} alt="Pediatrics"/>
                     <button onClick={() => showFlashcard(pediatricsContent)}>Learn About Pediatrics</button>
                 </div>
             </div>

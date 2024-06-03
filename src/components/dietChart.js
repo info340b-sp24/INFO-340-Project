@@ -1,10 +1,9 @@
 import React from 'react';
 import { Doughnut } from 'react-chartjs-2';
 import "../index.css"
-import "../index.css"
 import Chart from 'chart.js/auto';
 
-const DynamicPieChart = ({data}) => {
+const DynamicPieChart = ({ data }) => {
 
     const commonColors = [
         'rgba(255, 99, 132, 1)',
@@ -15,7 +14,7 @@ const DynamicPieChart = ({data}) => {
         'rgb(255, 0, 0, 1)',
         'rgb(60, 179, 113, 1)',
         'rgb(255, 165, 0, 1)',
-        'rgb(107,35,143, 1)',
+        'rgb(107, 35, 143, 1)',
         'rgba(0, 255, 255, 1)',
         'rgba(255, 105, 180, 1)',
         'rgba(128, 0, 0, 1)',
@@ -27,8 +26,7 @@ const DynamicPieChart = ({data}) => {
 
     const totalCalories = data.reduce((acc, item) => acc + item.Calories, 0);
 
-
-    const chartData  = {
+    const chartData = {
         labels: data.map(item => item.name),
         datasets: [
             {
@@ -52,23 +50,22 @@ const DynamicPieChart = ({data}) => {
         }
     };
 
+    const chartOutputText = data.map((item, index) => (
+        <p key={index}><strong>{item.key}</strong>: {item.Calories} calories /
+            {((item.Calories / totalCalories) * 100).toFixed(2)}% of today's diet
+        </p>
+    ));
+
     return (
         <div className="chartOutput">
-            <Doughnut data={chartData} options={options}/>.
+            <Doughnut data={chartData} options={options} />
 
             <div className="chartOutputText">
-                {data.map((item, index) => (
-                    <p key={index}><strong>{item.key} </strong>: {item.Calories} calories /
-                        {((item.Calories / totalCalories) * 100).toFixed(2)}% of today's diet
-                    </p>
-                ))}
-                <p>
-                    Total Calorie: {totalCalories}
-                </p>
+                {chartOutputText}
+                <p>Total Calorie: {totalCalories}</p>
             </div>
         </div>
     )
 };
-
 
 export default DynamicPieChart;

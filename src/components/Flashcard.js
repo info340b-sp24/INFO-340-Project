@@ -25,12 +25,14 @@ const Flashcard = ({ content, onClose }) => {
         <div className="flashcard-modal">
             <div className="flashcard-modal-content">
                 <span className="close" onClick={onClose}>&times;</span>
-                <div className="flashcard-content">
-                    {formatContent(content[currentIndex])}
-                </div>
-                <div className="flashcard-navigation">
-                    <button onClick={goToPrev} disabled={currentIndex === 0}>Previous</button>
-                    <button onClick={goToNext} disabled={currentIndex === content.length - 1}>Next</button>
+                <div className="flashcard-container">
+                    <div className="flashcard-content">
+                        {formatContent(content[currentIndex])}
+                    </div>
+                    <div className="flashcard-navigation">
+                        <button onClick={goToPrev} disabled={currentIndex === 0}>Previous</button>
+                        <button onClick={goToNext} disabled={currentIndex === content.length - 1}>Next</button>
+                    </div>
                 </div>
             </div>
         </div>

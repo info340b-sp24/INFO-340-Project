@@ -4,17 +4,15 @@ import Meal from './DietPage/Meal';
 import FoodSearchModal from './DietPage/FoodSearchModel';
 import CaloriesChart from './DietPage/CaloriesChart';
 import PieChart from './PieChart';
-import { useDiet } from './Context';
-import {getDatabase, ref, set, onValue} from 'firebase/database';
-import {getAuth} from 'firebase/auth';
+import { getDatabase, ref, set, onValue } from 'firebase/database';
+import { getAuth } from 'firebase/auth';
 import { FaSave } from "react-icons/fa";
 import { MdOutlineCalculate } from "react-icons/md";
 import { IoIosAddCircle } from "react-icons/io";
 import '../index.css';
 
-
 const DietPage = () => {
-    const { meals, setMeals } = useDiet();
+    const [meals, setMeals] = useState([]);
     const [showModal, setShowModal] = useState(false);
     const [currentMealId, setCurrentMealId] = useState(null);
     const [date, setDate] = useState(new Date().toLocaleDateString());
@@ -22,20 +20,17 @@ const DietPage = () => {
     const [calorieGoal, setCalorieGoal] = useState(null);
     const [isCloseToGoal, setIsCloseToGoal] = useState(false);
 
-    //search food feature
     const openModal = (mealId) => {
-        console.log("model open");
+        console.log("modal open");
         setCurrentMealId(mealId);
         setShowModal(true);
     };
 
     const closeModal = () => {
-        console.log("model closed");
+        console.log("modal closed");
         setShowModal(false);
         setCurrentMealId(null);
     };
-    //
-
 
     const addMeal = () => {
         console.log("meal added");
@@ -48,10 +43,9 @@ const DietPage = () => {
         setMeals(meals.filter(meal => meal.id !== id));
     };
 
-
     const addFoodToMeal = (food) => {
         console.log(food.key);
-        console.log("meal add to the meal");
+        console.log("food added to the meal");
         setMeals(meals.map(meal => {
             if (meal.id === currentMealId) {
                 return {
@@ -59,11 +53,8 @@ const DietPage = () => {
                     foods: [...meal.foods, food]
                 };
             }
-
-            console.log(meal)
             return meal;
         }));
-
         closeModal();
     };
 
@@ -105,12 +96,10 @@ const DietPage = () => {
             acc.Fiber += parseFloat(food.Fiber);
             acc.Protein += parseFloat(food.Protein);
         });
-
         return acc;
-    }, {Calories: 0, Carbs: 0, Fat: 0, Fiber: 0, Protein: 0 });
+    }, { Calories: 0, Carbs: 0, Fat: 0, Fiber: 0, Protein: 0 });
 
     useEffect(() => {
-
         if (calorieGoal !== null && totalNutrients.Calories > calorieGoal) {
             setIsCloseToGoal(true);
         } else {
@@ -129,8 +118,6 @@ const DietPage = () => {
         </div>
     ));
 
-
-
     const saveCurrentMeals = () => {
         const auth = getAuth();
         const user = auth.currentUser;
@@ -148,16 +135,16 @@ const DietPage = () => {
 
                 set(mealsRef, updatedMeals)
                     .then(() => {
-                        alert('Meal saved successfully!');
+                        alert('Meals saved successfully!');
                     })
                     .catch((error) => {
-                        alert('Something wrong here');
+                        alert('Something went wrong');
                     });
             }, {
                 onlyOnce: true
             });
         } else {
-            console.error('No user is currently logged in.');
+            alert('No user is currently logged in.');
         }
     };
 
@@ -168,23 +155,17 @@ const DietPage = () => {
 
     return (
         <div className="diet-page">
-
             <div className="header-container">
-
                 <button className="detailed-analysis-button" onClick={() => setShowDetailedAnalysis(true)}>
-                    <MdOutlineCalculate/>
+                    <MdOutlineCalculate />
                 </button>
-
-
                 <h1 className="date-heading">{date}</h1>
-
                 <button className="save-currMeal-button" onClick={saveCurrentMeals}>
-                    <FaSave/>
+                    <FaSave />
                 </button>
             </div>
 
             {isCloseToGoal && <p className="calories-warning">Warning: You are over your calorie goal!</p>}
-
 
             {showDetailedAnalysis && (
                 <div className="analysis-modal-content">
@@ -196,19 +177,20 @@ const DietPage = () => {
             )}
 
             <div className="dietOutput">
-
                 <div className="mealContainer">
                     <div className="mealContainerHeader">
-                        <button className="add-meal-button" onClick={addMeal}><IoIosAddCircle/></button>
+                        <button className="add-meal-button" onClick={addMeal}><IoIosAddCircle /></button>
                         <h2>Your Daily Meals</h2>
                     </div>
                     {mealList}
                 </div>
 
-                <div className="chart-container">
-                    <CaloriesChart meals={meals}/>
-                    <PieChart data={totalNutrients}/>
-                </div>
+                {meals.length > 0 && (
+                    <div className="chart-container">
+                        <CaloriesChart meals={meals} />
+                        <PieChart data={totalNutrients} />
+                    </div>
+                )}
             </div>
 
             <FoodSearchModal
@@ -216,7 +198,6 @@ const DietPage = () => {
                 onClose={closeModal}
                 onAddFood={addFoodToMeal}
             />
-
         </div>
     );
 };

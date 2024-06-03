@@ -94,15 +94,17 @@ const Quiz = ({ subjects, onClose }) => {
     }
 
     if (quizStarted) {
+        const optionsList = questions[currentQuestionIndex].options.map((option, index) => (
+            <button className="quiz-option-button" key={index} onClick={() => handleOptionClick(option)}>{option}</button>
+        ));
+
         return (
             <div className="quiz-modal">
                 <div className="quiz-modal-content">
                     <span className="close" onClick={onClose}>&times;</span>
                     <h3>{questions[currentQuestionIndex].question}</h3>
                     <div className="options">
-                        {questions[currentQuestionIndex].options.map((option, index) => (
-                            <button className="quiz-option-button" key={index} onClick={() => handleOptionClick(option)}>{option}</button>
-                        ))}
+                        {optionsList}
                     </div>
                     <div className="timer">Time left: {timeLeft} seconds</div>
                 </div>
@@ -110,17 +112,21 @@ const Quiz = ({ subjects, onClose }) => {
         );
     }
 
+    const subjectOptions = (
+        <select className="quiz-select" onChange={handleSubjectChange} value={selectedSubject}>
+            <option value="" disabled>Select a subject</option>
+            <option value="weightLossContent">Weight Loss</option>
+            <option value="muscleGrowthContent">Muscle Growth</option>
+            <option value="pediatricsContent">Pediatrics</option>
+        </select>
+    );
+
     return (
         <div className="quiz-modal">
             <div className="quiz-modal-content">
                 <span className="close" onClick={onClose}>&times;</span>
                 <h3>Select a subject to start the quiz</h3>
-                <select className="quiz-select" onChange={handleSubjectChange} value={selectedSubject}>
-                    <option value="" disabled>Select a subject</option>
-                    <option value="weightLossContent">Weight Loss</option>
-                    <option value="muscleGrowthContent">Muscle Growth</option>
-                    <option value="pediatricsContent">Pediatrics</option>
-                </select>
+                {subjectOptions}
                 <button className="quiz-button" onClick={startQuiz} disabled={!selectedSubject}>Start Quiz</button>
             </div>
         </div>
