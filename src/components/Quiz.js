@@ -125,7 +125,7 @@ const Quiz = ({ subjects, onClose }) => {
             <div className="quiz-modal">
                 <div className="quiz-modal-content">
                     <span className="close" onClick={onClose}>&times;</span>
-                    <h3>{score >= 4 ? 'You passed!' : 'You failed.'}</h3>
+                    <h3>{`Your score: ${score}/${questions.length} - ${score >= 4 ? 'You passed!' : 'You failed, study some more and try again!'}`}</h3>
                     <button className="quiz-button" onClick={saveQuizResult}>Save Quiz</button>
                     <button className="quiz-button" onClick={onClose}>Close</button>
                 </div>
