@@ -1,4 +1,4 @@
-# NutriNus Web App
+# NutriGenius Web App
 
 Welcome to NutriNus, a web application designed to help you manage your meals and track your nutritional intake. This app is built using React and Chart.js, and it integrates with Firebase for real-time database interactions and user authentication.
 
