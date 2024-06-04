@@ -117,6 +117,12 @@ const UserProfileAuth = () => {
             });
     };
 
+    const transformedNutritionalGoals = Object.entries(nutritionalGoals).map(([key, value]) => (
+        <div key={key}>
+            <strong>{key.charAt(0).toUpperCase() + key.slice(1)}:</strong> {value}
+        </div>
+    ));
+
     const renderedMeals = meals.length > 0 ? meals.map(([mealId, meal]) => (
         <div key={mealId} style={{
             border: '2px solid #FFB347', margin: '10px', padding: '10px', borderRadius: '10px'
@@ -147,11 +153,7 @@ const UserProfileAuth = () => {
                 <h1 id="welcome-message">Welcome, {user.email}</h1>
                 <h2 id="nutritional-header">Your Nutritional Goals:</h2>
                 <div className="nutritional-goals">
-                    {Object.entries(nutritionalGoals).map(([key, value]) => (
-                        <div key={key}>
-                            <strong>{key.charAt(0).toUpperCase() + key.slice(1)}:</strong> {value}
-                        </div>
-                    ))}
+                    {transformedNutritionalGoals}
                 </div>
                 <div className="nutrient-input">
                     <select id="select-goal" value={selectedNutrient} onChange={e => setSelectedNutrient(e.target.value)}>
