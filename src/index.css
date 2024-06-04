@@ -478,6 +478,14 @@ header, footer {
   font-size: 1.5rem;
 }
 
+.nutrient-chart {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
 .nutrient-list button {
   width: 100%;
   background-color: orange;

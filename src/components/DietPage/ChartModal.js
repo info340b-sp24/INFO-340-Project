@@ -13,7 +13,7 @@ const ChartModal = ({ show, onClose, meals, totalNutrients }) => {
                 <h2 className="chart-header">Nutrional Charts</h2>
 
                 <span className="close" onClick={onClose}>&times;</span>
-                <div className="nutrient-list">
+                <div className="nutrient-chart">
                     <CaloriesChart meals={meals} />
                     <PieChart data={totalNutrients} />
                 </div>
