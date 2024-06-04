@@ -9,8 +9,9 @@ const UserProfileAuth = () => {
     const [password, setPassword] = useState('');
     const [error, setError] = useState('');
     const [meals, setMeals] = useState([]);
-    const [calorieGoal, setCalorieGoal] = useState(null);
-    const [newCalorieGoal, setNewCalorieGoal] = useState('');
+    const [nutritionalGoals, setNutritionalGoals] = useState({});
+    const [newValue, setNewValue] = useState('');
+    const [selectedNutrient, setSelectedNutrient] = useState('calories');
 
     const auth = getAuth();
 
@@ -29,7 +30,7 @@ const UserProfileAuth = () => {
         set(ref(db, 'users/' + userId), {
             email: email,
             lastLogin: Date.now(),
-            calorieGoal: 0
+            nutritionalGoals: { calories: 0 }
         })
             .then(() => {
                 console.log("Data saved successfully!");
@@ -74,8 +75,8 @@ const UserProfileAuth = () => {
         const userRef = ref(db, 'users/' + userId);
         onValue(userRef, (snapshot) => {
             const data = snapshot.val();
-            if (data) {
-                setCalorieGoal(data.calorieGoal);
+            if (data && data.nutritionalGoals) {
+                setNutritionalGoals(data.nutritionalGoals);
             }
         });
     };
@@ -101,17 +102,18 @@ const UserProfileAuth = () => {
             });
     };
 
-    const handleUpdateCalorieGoal = () => {
+    const handleUpdateNutrient = () => {
         const db = getDatabase();
         const userId = user.uid;
-        update(ref(db, 'users/' + userId), { calorieGoal: newCalorieGoal })
+        const updatedGoals = { ...nutritionalGoals, [selectedNutrient]: newValue };
+        update(ref(db, 'users/' + userId), { nutritionalGoals: updatedGoals })
             .then(() => {
-                setCalorieGoal(newCalorieGoal);
-                setNewCalorieGoal('');
-                console.log('Calorie goal updated successfully.');
+                setNutritionalGoals(updatedGoals);
+                setNewValue('');
+                console.log(`${selectedNutrient} updated successfully.`);
             })
             .catch((error) => {
-                console.error('Error updating calorie goal:', error);
+                console.error(`Error updating ${selectedNutrient}:`, error);
             });
     };
 
@@ -142,18 +144,32 @@ const UserProfileAuth = () => {
     if (user) {
         return (
             <div className="profile-container">
-                <h1 className="welcome-message">Welcome, {user.email}</h1>
-                <h2>Your daily Calorie goal is: {calorieGoal}</h2>
-                <div className="calorieGoal">
-
-                    <input
-                        type="number"
-                        value={newCalorieGoal}
-                        onChange={e => setNewCalorieGoal(e.target.value)}
-                        placeholder="Set new calorie goal"
-                        className="calorie-input"
-                    />
-                    <button onClick={handleUpdateCalorieGoal} className="update-button">Update Calorie Goal</button>
+                <h1 id="welcome-message">Welcome, {user.email}</h1>
+                <h2 id="nutritional-header">Your Nutritional Goals:</h2>
+                <div className="nutritional-goals">
+                    {Object.entries(nutritionalGoals).map(([key, value]) => (
+                        <div key={key}>
+                            <strong>{key.charAt(0).toUpperCase() + key.slice(1)}:</strong> {value}
+                        </div>
+                    ))}
+                </div>
+                <div className="nutrient-input">
+                    <select value={selectedNutrient} onChange={e => setSelectedNutrient(e.target.value)}>
+                        <option value="calories">Calories</option>
+                        <option value="carbs">Carbs</option>
+                        <option value="protein">Protein</option>
+                        <option value="fat">Fat</option>
+                        <option value="fiber">Fiber</option>
+                    </select>
+                    <div className="input-with-button">
+                        <input
+                            type="number"
+                            value={newValue}
+                            onChange={e => setNewValue(e.target.value)}
+                            placeholder={`Set new ${selectedNutrient}`}
+                        />
+                        <button onClick={handleUpdateNutrient}>Update</button>
+                    </div>
                 </div>
 
                 <div className="meals-container">
