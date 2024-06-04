@@ -2,8 +2,7 @@ import React, { useState, useEffect } from 'react';
 import DietInfo from './DietPage/DietInfo';
 import Meal from './DietPage/Meal';
 import FoodSearchModal from './DietPage/FoodSearchModel';
-import CaloriesChart from './DietPage/CaloriesChart';
-import PieChart from './PieChart';
+import ChartModal from './DietPage/ChartModal';
 import { getDatabase, ref, set, onValue } from 'firebase/database';
 import { getAuth } from 'firebase/auth';
 import { FaSave } from "react-icons/fa";
@@ -17,6 +16,7 @@ const DietPage = () => {
     const [currentMealId, setCurrentMealId] = useState(null);
     const [date, setDate] = useState(new Date().toLocaleDateString());
     const [showDetailedAnalysis, setShowDetailedAnalysis] = useState(false);
+    const [showChartModal, setShowChartModal] = useState(false); // New state for chart modal
     const [calorieGoal, setCalorieGoal] = useState(null);
     const [isCloseToGoal, setIsCloseToGoal] = useState(false);
 
@@ -176,23 +176,25 @@ const DietPage = () => {
                 </div>
             )}
 
+            <div className="diet-button-container">
+            <button className="show-chart-button" onClick={() => setShowChartModal(true)}>Show Charts</button>
+
+            </div>
             <div className="dietOutput">
                 <div className="mealContainer">
                     <div className="mealContainerHeader">
                         <button className="add-meal-button" onClick={addMeal}><IoIosAddCircle /></button>
                         <h2>Your Daily Meals</h2>
                     </div>
-                    {mealList}
-                </div>
-
-                {meals.length > 0 && (
-                    <div className="chart-container">
-                        <CaloriesChart meals={meals} />
-                        <PieChart data={totalNutrients} />
-                    </div>
-                )}
-            </div>
-
+                        {mealList}
+                        </div>
+                            <ChartModal
+                                show={showChartModal}
+                                onClose={() => setShowChartModal(false)}
+                                meals={meals}
+                                totalNutrients={totalNutrients}
+                            />
+                        </div>
             <FoodSearchModal
                 show={showModal}
                 onClose={closeModal}

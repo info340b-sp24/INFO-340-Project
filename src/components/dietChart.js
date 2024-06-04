@@ -1,7 +1,6 @@
 import React from 'react';
 import { Doughnut } from 'react-chartjs-2';
 import "../index.css"
-import Chart from 'chart.js/auto';
 
 const DynamicPieChart = ({ data }) => {
 
