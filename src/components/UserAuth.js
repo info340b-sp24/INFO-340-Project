@@ -154,21 +154,22 @@ const UserProfileAuth = () => {
                     ))}
                 </div>
                 <div className="nutrient-input">
-                    <select value={selectedNutrient} onChange={e => setSelectedNutrient(e.target.value)}>
-                        <option value="calories">Calories</option>
-                        <option value="carbs">Carbs</option>
-                        <option value="protein">Protein</option>
-                        <option value="fat">Fat</option>
-                        <option value="fiber">Fiber</option>
+                    <select id="select-goal" value={selectedNutrient} onChange={e => setSelectedNutrient(e.target.value)}>
+                        <option className="goal-option" value="calories">Calories</option>
+                        <option className="goal-option" value="carbs">Carbs</option>
+                        <option className="goal-option" value="protein">Protein</option>
+                        <option className="goal-option" value="fat">Fat</option>
+                        <option className="goal-option" value="fiber">Fiber</option>
                     </select>
                     <div className="input-with-button">
                         <input
+                            id="input-goal"
                             type="number"
                             value={newValue}
                             onChange={e => setNewValue(e.target.value)}
-                            placeholder={`Set new ${selectedNutrient}`}
+                            placeholder={`Set ${selectedNutrient} goal`}
                         />
-                        <button onClick={handleUpdateNutrient}>Update</button>
+                        <button id="update-goal" onClick={handleUpdateNutrient}>Update</button>
                     </div>
                 </div>
 
