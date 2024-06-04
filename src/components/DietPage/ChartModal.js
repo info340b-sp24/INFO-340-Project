@@ -11,7 +11,6 @@ const ChartModal = ({ show, onClose, meals, totalNutrients }) => {
         <div className="nutrient-modal">
             <div className="nutrient-modal-content">
                 <h2 className="chart-header">Nutrional Charts</h2>
-
                 <span className="close" onClick={onClose}>&times;</span>
                 <div className="nutrient-chart">
                     <CaloriesChart meals={meals} />
