@@ -2,7 +2,7 @@ import React from 'react';
 import { Doughnut } from 'react-chartjs-2';
 import "../index.css"
 import "../index.css"
-import Chart from 'chart.js/auto';
+
 
 const DynamicPieChart = ({data}) => {
 
@@ -24,9 +24,6 @@ const DynamicPieChart = ({data}) => {
     ];
 
     const backgroundColors = data.map(() => commonColors[Math.floor(Math.random() * commonColors.length)]);
-
-    const totalCalories = data.reduce((acc, item) => acc + item.calories, 0);
-
 
     const chartData  = {
         labels: data.map(item => item.name),

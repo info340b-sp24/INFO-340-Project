@@ -142,7 +142,7 @@ const LearnPage = () => {
             <h1 className="learn-heading">Learn Page</h1>
             <div className="learn-content">
                 <div className="learn-item">
-                    <h3>Weight Loss</h3>
+                    <h2>Weight Loss</h2>
                     <p>Nutrition tips for weight loss.</p>
                     <img src={WeightLossImg} alt="Weight Loss"/>
                     <button onClick={() => showFlashcard(weightLossContent)}>Learn About Weight Loss</button>
@@ -154,37 +154,37 @@ const LearnPage = () => {
                     <button onClick={() => showFlashcard(muscleGrowthContent)}>Learn About Muscle Growth</button>
                 </div>
                 <div className="learn-item">
-                    <h3>Pediatrics</h3>
+                    <h2>Pediatrics</h2>
                     <p>Nutrition tips for children.</p>
                     <img src={PediatricsImg} alt="Pediatrics"/>
                     <button onClick={() => showFlashcard(pediatricsContent)}>Learn About Pediatrics</button>
                 </div>
                 <div className="learn-item">
-                    <h3>Vegan and Vegetarian Nutrition</h3>
+                    <h2>Vegan and Vegetarian Nutrition</h2>
                     <p>Nutrition tips for vegans and vegetarians.</p>
                     <img src={VeganImg} alt="Vegan and Vegetarian Nutrition"/>
                     <button onClick={() => showFlashcard(veganContent)}>Learn About Vegan and Vegetarian Nutrition</button>
                 </div>
                 <div className="learn-item">
-                    <h3>Healthy Aging</h3>
+                    <h2>Healthy Aging</h2>
                     <p>Nutrition tips for healthy aging.</p>
                     <img src={HealthyAgingImg} alt="Healthy Aging"/>
                     <button onClick={() => showFlashcard(healthyAgingContent)}>Learn About Healthy Aging</button>
                 </div>
                 <div className="learn-item">
-                    <h3>Diabetes Management</h3>
+                    <h2>Diabetes Management</h2>
                     <p>Nutrition tips for managing diabetes.</p>
                     <img src={DiabetesImg} alt="Diabetes Management"/>
                     <button onClick={() => showFlashcard(diabetesManagementContent)}>Learn About Diabetes Management</button>
                 </div>
                 <div className="learn-item">
-                    <h3>Heart Health</h3>
+                    <h2>Heart Health</h2>
                     <p>Nutrition tips for heart health.</p>
                     <img src={HeartHealthImg} alt="Heart Health"/>
                     <button onClick={() => showFlashcard(heartHealthContent)}>Learn About Heart Health</button>
                 </div>
                 <div className="learn-item">
-                    <h3>Immune Support</h3>
+                    <h2>Immune Support</h2>
                     <p>Nutrition tips for supporting the immune system.</p>
                     <img src={ImmuneSupportImg} alt="Immune Support"/>
                     <button onClick={() => showFlashcard(immuneSupportContent)}>Learn About Immune Support</button>
