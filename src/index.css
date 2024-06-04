@@ -500,11 +500,6 @@ header, footer {
   background: linear-gradient(135deg, #FF5722, #FF9800);
 }
 
-.input-with-button {
-
-}
-
-
 #welcome-message {
   padding-top: 1rem;
   font-size: 2rem;
@@ -548,6 +543,7 @@ header, footer {
   border-radius: 5px;
   cursor: pointer;
   transition: background-color 0.3s;
+  color: white;
 
 }
 
